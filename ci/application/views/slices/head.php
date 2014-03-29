@@ -1,6 +1,6 @@
 <!-- robot speak -->	
 <meta charset="utf-8">
-<title><?php if (!empty($title)) echo $title.' | '; ?> Stencil by Scotch.io</title>
+<title><?php if (!empty($title)) echo $title.' | '; ?> Fantasy Games for Fun</title>
 <?php echo chrome_frame(); ?>
 <?php echo view_port(); ?>
 <?php echo apple_mobile('black-translucent'); ?>

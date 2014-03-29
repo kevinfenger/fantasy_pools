@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		//Sets the variable $title to be used in your views
-		$this->stencil->title('Stencil');
+		$this->stencil->title('Fantasy Games');
 
 		//Sets the layout to be home_layout (/views/layouts/home_layout.php)
 		$this->stencil->layout('home_layout');
