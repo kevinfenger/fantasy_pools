@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Login extends CI_Controller {
 
 	public function __construct()
 	{
@@ -15,10 +15,10 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		//Sets the variable $title to be used in your views
-		$this->stencil->title('Fantasy Games');
+		$this->stencil->title('Login');
 
 		//Sets the layout to be home_layout (/views/layouts/home_layout.php)
-		$this->stencil->layout('home_layout');
+		$this->stencil->layout('login_layout');
 
 		//Adds Font-Awesome to the homepage (/assets/css/font-awesome.css)
 		$this->stencil->css('font-awesome');
@@ -29,7 +29,7 @@ class Home extends CI_Controller {
 
 		//Mixes everything together and loads the home_view as the $content variable in the layout
 		//home_view is located here: /views/pages/home_view.php
-		$this->stencil->paint('home_view', array('is_logged_in' => true, 
+		$this->stencil->paint('login_view', array('is_logged_in' => false, 
                                                          'avatar' => 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/t5.0-1/372587_43806233_1380433586_q.jpg', 
                                                          'name'   => 'Kevin'));
 	}

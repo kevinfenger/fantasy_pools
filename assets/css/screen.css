@@ -1,0 +1,49 @@
+/* Style icon over here */
+
+li.left { 
+   float: left; 
+}
+li.right { 
+   float: right; 
+}
+.small_photo { 
+    border: 1px solid white;
+    -webkit-border-radius: 0;
+    height: 19px;
+    width: 19px;
+}
+.hidden { 
+    display:none; 
+}
+
+.modal-noscrollbar { 
+    max-height:650px; 
+}
+
+.header_name { 
+    margin-left: 5px; 
+}
+
+.login-unit { 
+    padding-top: 60px; 
+}
+.own-login { 
+    color: #888;
+    margin-top: 5px;
+    padding: 7px;  
+}
+.own-login-header {
+    width: 300px; 
+    height: 46px; 
+    border: 1px solid #d4d4d4;
+    color: white;
+    margin-top: 15px;
+    background-color: green;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+.own-login-header p {
+    padding-top: 12px;
+    cursor: pointer;
+}
