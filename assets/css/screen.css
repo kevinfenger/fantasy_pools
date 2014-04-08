@@ -47,3 +47,30 @@ li.right {
     padding-top: 12px;
     cursor: pointer;
 }
+.login-control-group { 
+    display:inline; 
+}
+.image-vertical-group ul { 
+    list-style-type: none;
+    margin: 0 0 10px 5px;
+}
+.image-vertical-group li { 
+   margin: 0 0 5px 0;
+}
+.valid { 
+    border: 1px solid  rgba(10, 116, 10, 0.6) !important;
+    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(10, 116, 10, 0.6) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px  rgba(10, 116, 10, 0.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px  rgba(10, 116, 10, 0.6) !important; 
+}
+.invalid { 
+    border: 1px solid rgba(236, 82, 94, 0.6) !important;
+    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(236, 82, 94, 0.6) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(236, 82, 94, 0.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(236, 82, 94, 0.6) !important; 
+}
+#dropdownMenu1 .caret { 
+    border-top-color: #838586; 
+    border-bottom-color: #838586; 
+    margin-left: 5px; 
+}

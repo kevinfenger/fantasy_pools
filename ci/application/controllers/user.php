@@ -4,7 +4,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-//        $this->load->model('user_model');
+        $this->load->model('user_model');
     }
     
     public function check_name() 
@@ -26,5 +26,24 @@ class User extends CI_Controller
         else { 
             echo 'The email you enetered is invalid';
         } 
+    }
+    public function logout() 
+    {
+        $this->session->unset_userdata(array('id'         => null, 
+                                             'avatar_url' => null, 
+                                             'first_name' => null,
+                                             'last_name'  => null));  
+        $this->session->sess_destroy();
+    } 
+    public function facebook_login() 
+    {
+        $user = $this->input->post('user'); 
+        try {
+            $this->user_model->facebook_login($user); 
+            echo print_r($user,1); 
+        }
+        catch (Exception $e) { 
+        //echo 'true'; 
+        }
     }
 }

@@ -33,35 +33,36 @@
 	  </form>                
 	</div>
 	<div class="tab-pane fade" id="create">
-          <a href='#' id='fb_login_two'><img src='/assets/img/fb_login.png'></img></a>
-          
-          <div id="login_with_us" class="own-login-header">
-             <p>
-             <span>Log in using Fantasy Pools</span> 
-             </p>
+          <div class="image-vertical-group">
+          <ul>
+          <li><a href='#' id='fb_login_two'><img src='/assets/img/fb_login.png'></img></a></li>
+          <li><a href='#' id='login_with_us'><img src='/assets/img/fp_login.png'></img></a></li>
+          </ul>
           </div>
           <div id="fp_login" class="hidden own-login">
 	  <form class="form-horizontal" action='' method="POST" id="tab">
-
-	    <label>First Name</label>
-	    <input type="text" id='first_name' name='first_name' value="<?php echo set_value('first_name'); ?>" class="input-xlarge" />
-            <span id="first_name_verify_img" class="verify"></span>
+            
+            <div class="login-control-group"> 
+	    <label for="first_name">First Name</label>
+	    <input type="text" id='first_name' name='first_name' pattern="[A-Za-z-0-9]+" value="<?php echo set_value('first_name'); ?>" class="input-xlarge" />
+            <span id="first_name_verify_txt" class="verify"></span>
+            </div>
 
 	    <label>Last Name</label>
 	    <input type="text" id='last_name' name='last_name' value="<?php echo set_value('last_name'); ?>" class="input-xlarge" />
-            <span id="last_name_verify_img" class="verify"></span>
+            <span id="last_name_verify_txt" class="verify"></span>
 
 	    <label for="email">Email</label>
 	    <input type="email" id='email' name='email' value="<?php echo set_value('email'); ?>" class="input-xlarge" />
-            <span id="email_verify" class="verify"></span>
+            <span id="email_verify_txt" class="verify"></span>
 	    
             <label>Password</label>
 	    <input type="password" id='password' name='password' value="<?php echo set_value('password'); ?>" class="input-xlarge" />
-            <span id="password_verify" class="verify"></span>
+            <span id="password_verify_txt" class="verify"></span>
 	    
             <label>Confirm Password</label>
 	    <input type="password" id='confirm_password' name='confirm_password' value="<?php echo set_value('confirm_password'); ?>" class="input-xlarge" />
-            <span id="confirm_password_verify" class="verify"></span>
+            <span id="confirm_password_verify_txt" class="verify"></span>
 	    <div>
 	      <button class="btn btn-primary">Create Account</button>
 	    </div>

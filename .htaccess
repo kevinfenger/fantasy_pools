@@ -4,6 +4,13 @@ RewriteBase /
 #RewriteCond $1 !^(index\.php|images|robots\.txt|assets|assets/css)
 #RewriteRule ^(.*)$ /index.php/$1 [L]
 
+#RewriteCond %{SERVER_PORT} 80 
+#RewriteRule ^(.*)$ https://fantasy.kevinfenger.com/$1 [R,L]
+
+#RewriteCond %{SERVER_PORT} 443 
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/ [R=301,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /index.php/$1 [L]

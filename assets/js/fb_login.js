@@ -1,13 +1,7 @@
-/*
- *  * flogin.js
- *   * stupidly simple facebook login as a jQuery plugin
- *    *
- *     * Gary Rafferty - 2013
- *      */
 (function($) {
   $.fn.facebook_login = function(options) {
     var defaults = {
-      endpoint: '/sessions/new',
+      endpoint: '/user/facebook_login',
       permissions: 'email',
       onSuccess: function(data) { console.log([200,'OK']); },
       onError: function(data) { console.log([500,'Error']); }
@@ -38,26 +32,25 @@
 
     this.bind('click', function() {
       FB.login(function(r) {
-        var response;
-        if(response = r.authResponse) {
+          if (r.authResponse) { 
+          var response = r.authResponse;
           var user_id = response.userID;
           var token   = response.accessToken;
-
-          FB.api('/me?access_token='+token, function(user) {
-            var email;
-            if(email = user.email) {
+          FB.api('/me?fields=picture,first_name,last_name,id&access_token='+token, function(user) {
               $.ajax({
                 url: settings.endpoint,
-                data: {user_id: user_id,token: token,email: email},
+                data: {user:user,token:token},
                 type: 'POST',
-                success: settings.onSuccess(),
-                error: settings.onError()
+                success: function(msg) { window.location.replace("http://fantasy.kevinfenger.com/"); },
+          //      success: function(msg) { console.log(msg); },
+                error: function(msg) { window.location.replace("http://fantasy.kevinfenger.com/"); }
               });
-            }
           });
-        } else {
-          settings.onError();
-        }
+          //window.location.replace("http://fantasy.kevinfenger.com/"); 
+          }
+          else { 
+          
+          } 
       }, {scope: settings.permissions});
     });
   }

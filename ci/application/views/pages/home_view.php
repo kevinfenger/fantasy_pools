@@ -1,7 +1,6 @@
 		<div class="hero-unit">
-			<h1><i class="icon-pencil icon-spin"></i> Boom! Hello, world.</h1>
-			<p>A simple and awesome template system for Codeigniter. Stencil is the perfect out-of-the-box solution for all your Codeigniter projects.</p>
-			<p><a class="btn btn-primary btn-large" href="http://scotch.io/development/stencil" target="_blank">View Docs &raquo;</a></p>
+			<h1>Welcome to Fantasy Pools</h1>
+			<p>An awesome place for all of your fantasy team and sports betting needs.</p>
 		</div>
 		<div class="row">
 			<div class="span4">
