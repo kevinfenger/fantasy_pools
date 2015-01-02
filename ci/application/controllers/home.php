@@ -17,6 +17,10 @@ class Home extends CI_Controller {
 		$this->stencil->title('Fantasy Games');
 		$this->stencil->layout('home_layout');
 		$this->stencil->css('font-awesome');
+                if ($this->session->userdata('id'))  
+                    $this->stencil->slice(array('sidebar' => 'sidebar_my_teams'));
+                else 
+                    $this->stencil->slice(array('sidebar' => 'sidebar_welcome'));
 		$this->stencil->paint('home_view');
 	}
 

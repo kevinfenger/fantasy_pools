@@ -41,6 +41,13 @@ class Slices {
 	{
 		$this->CI =& get_instance();
 	}
+
+	public function sidebar()
+	{
+            $this->CI->load->model('team_model');
+            $data['user_teams'] = $this->CI->team_model->get_teams_by_user();  
+            return $data; 
+        }
 }
 /* End of file Slices.php */
 /* Location: ./application/libararies/Slices.php */

@@ -36,6 +36,8 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+define('LEAGUE_PRIVATE_VISIBILITY',0); 
+define('LEAGUE_PUBLIC_VISIBILITY',1); 
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

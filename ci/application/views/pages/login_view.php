@@ -8,7 +8,7 @@
       </ul>
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane active in" id="login">
-	  <form class="form-horizontal" action='' method="POST">
+	  <form action='javascript:void(0);'>
 	    <h5>Social Login</h5>
             <a href='#' id='fb_login'><img src='/assets/img/fb_login.png'></img></a>
 	    <h5>Or</h5>
@@ -19,15 +19,16 @@
 	      </div>
 	    </div>
 	    <div class="control-group">
-	      <label class="control-label" for="password">Password</label>
+	      <label class="control-label" for="password_local_login">Password</label>
 	      <div class="controls">
-	        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+	        <input type="password" id="password_local_login" name="password_local_login" placeholder="" class="input-xlarge">
 	      </div>
    	    </div>
 	    <div class="control-group">
+              <span id="unable_to_login_txt" class="verify" style="padding-bottom:10px"></span>
 	      <div class="controls">
-	          <button class="btn btn-success">Login</button>
-                  <a href="#create" data-toggle="tab">Forgot Password?</a>
+	          <button id="local_login_button" class="btn btn-success">Login</button>
+                  <a href="#" data-toggle="tab">Forgot Password?</a>
 	      </div>
 	    </div>
 	  </form>                
@@ -40,7 +41,7 @@
           </ul>
           </div>
           <div id="fp_login" class="hidden own-login">
-	  <form class="form-horizontal" action='' method="POST" id="tab">
+	  <form class="form-horizontal" action='javascript:void(0);'>
             
             <div class="login-control-group"> 
 	    <label for="first_name">First Name</label>
@@ -57,14 +58,15 @@
             <span id="email_verify_txt" class="verify"></span>
 	    
             <label>Password</label>
-	    <input type="password" id='password' name='password' value="<?php echo set_value('password'); ?>" class="input-xlarge" />
+	    <input type="password" id='password_one' name='password' value="<?php echo set_value('password'); ?>" class="input-xlarge" />
             <span id="password_verify_txt" class="verify"></span>
 	    
             <label>Confirm Password</label>
 	    <input type="password" id='confirm_password' name='confirm_password' value="<?php echo set_value('confirm_password'); ?>" class="input-xlarge" />
             <span id="confirm_password_verify_txt" class="verify"></span>
 	    <div>
-	      <button class="btn btn-primary">Create Account</button>
+              <br />
+	      <p><button id='create_local_account_button' class="btn btn-primary">Create Account</button></p>
 	    </div>
 	  </form>
           </div>

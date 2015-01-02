@@ -74,3 +74,12 @@ li.right {
     border-bottom-color: #838586; 
     margin-left: 5px; 
 }
+.header-tab-left { 
+    margin: -8px 0px 0px 15px; 
+}
+.thumbnails .caption { 
+    margin: -10px 0px 0px 10px;
+}
+.add-padding-top { 
+    padding-top: 60px; 
+}
