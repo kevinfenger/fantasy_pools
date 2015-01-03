@@ -1,27 +1,36 @@
-  <div class="span4">
+  <div class="span6">
     <h3>My Team</h3>
     <div id="team_id_holder" style="display:none" value=<?php echo $team_id;?>></div>
+    <div id="no-more-tables"> 
     <table id="team_info" class="table table-striped">
       <thead>
         <tr>
           <th>Position</th>
           <th>Name</th>
           <th>Team</th>
-          <th>Points</th>
+          <th>W1</th>
+          <th>W2</th>
+          <th>W3</th>
+          <th>W4</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($my_team as $tm):?>
         <tr class="player_position" value=<?php echo $tm['player']['player_id']; ?>> 
-          <td class="player_position"><?php echo $tm['position']['position_short_description']; ?></td> 
-          <td class="player_name"><?php if ($tm['player']): ?>
+          <td data-title="Position" class="player_position"><?php echo $tm['position']['position_short_description']; ?></td> 
+          <td data-title="Name" class="player_name"><?php if ($tm['player']): ?>
               <p><?php echo $tm['player']['full_name']; ?></p>
               <?php else: ?> 
               <strong>Not Yet Selected</strong>              
               <?php endif; ?> 
           </td>
-          <td class="player_team"><?php echo $tm['player']['pro_team']; ?></td> 
-          <td>0</td>  
+          <td data-title="Team" class="player_team"><?php echo $tm['player']['pro_team']; ?></td> 
+          <td data-title="W1">0</td>  
+          <td data-title="W2">0</td>  
+          <td data-title="W3">0</td>  
+          <td data-title="W4">0</td>  
+          <td data-title="Total">0</td> 
           <?php if (strtotime(PLAYERS_VIEWABLE_DATETIME) > time(null)): ?>
           <td><?php if ($tm['player']): ?>
                 <button class="btn btn-primary btn-mini sel_play" data-toggle="modal" data-target="#choose_player_modal" type="button">Change</button>
@@ -34,6 +43,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    </div> 
   </div>
 <div class="modal fade" id="choose_player_modal" tabindex="-1" role="dialog" aria-labelledby="choose_player_modalLabel" aria-hidden="true">
   <div class="modal-dialog">

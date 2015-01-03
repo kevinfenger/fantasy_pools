@@ -1,7 +1,9 @@
 <div class="row">
-  <div class="span4">
+  <div class="span8">
+    <div id="team_id_holder" style="display:none" value=<?php echo $team_id;?>></div>
     <h3><a href="league?league_id=<?php echo $league_id?>"><?php echo $league_name; ?></a></h3>
     <h4><?php echo $team_name; ?></h4>
+    <div id="no-more-tables"> 
     <table id="team_info" class="table table-striped">
       <thead>
         <tr>
@@ -18,19 +20,19 @@
       <tbody>
         <?php foreach ($team_players as $tm):?>
         <tr class="player_position" value=<?php echo $tm['player']['player_id']; ?>> 
-          <td class="player_position"><?php echo $tm['position']['position_short_description']; ?></td> 
-          <td class="player_name"><?php if ($tm['player']): ?>
+          <td data-title="Position" class="player_position"><?php echo $tm['position']['position_short_description']; ?></td> 
+          <td data-title="Name" class="player_name"><?php if ($tm['player']): ?>
               <p><?php echo $tm['player']['full_name']; ?></p>
               <?php else: ?> 
               <strong>Not Yet Selected</strong>              
               <?php endif; ?> 
           </td>
-          <td class="player_team"><?php echo $tm['player']['pro_team']; ?></td> 
-          <td>0</td>  
-          <td>0</td>  
-          <td>0</td>  
-          <td>0</td>  
-          <td>0</td> 
+          <td data-title="Team" class="player_team"><?php echo $tm['player']['pro_team']; ?></td> 
+          <td data-title="W1 Points">0</td>  
+          <td data-title="W2 Points">0</td>  
+          <td data-title="W3 Points">0</td>  
+          <td data-title="W4 Points">0</td>  
+          <td data-title="Total Points">0</td> 
           <?php if (strtotime(PLAYERS_VIEWABLE_DATETIME) > time(null)): ?>
           <td><?php if ($tm['player']): ?>
                 <button class="btn btn-primary btn-mini sel_play" data-toggle="modal" data-target="#choose_player_modal" type="button">Change</button>
@@ -43,6 +45,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    </div> 
   </div>
 </div> 
 <div class="modal fade" id="choose_player_modal" tabindex="-1" role="dialog" aria-labelledby="choose_player_modalLabel" aria-hidden="true">
