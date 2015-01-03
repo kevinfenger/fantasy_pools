@@ -33,5 +33,51 @@ class Team_model extends CI_Model {
             $this->db->query($sql, array($params['team_id'], $pi)); 
         }
         return $this->db->last_query(); 
-    } 
+    }
+    public function does_team_exist($team_id) 
+    { 
+       $this->db->select('team_id');
+       $query = $this->db->get_where('teams', array('team_id' => $team_id));
+       
+       return $query->num_rows() > 0; 
+    }
+    public function get_league_id($team_id) 
+    { 
+       $this->db->select('league_id');
+       $query = $this->db->get_where('teams', array('team_id' => $team_id));
+       $row = $query->row();
+       return $row->league_id; 
+    }
+    public function is_team_owner($user_id, $team_id) 
+    { 
+       $this->db->select('team_id');
+       $query = $this->db->get_where('teams', array('team_id' => $team_id, 'owner_id' => $user_id));
+       
+       return $query->num_rows() > 0; 
+
+    }  
+    public function get_team_user_id($team_id) 
+    { 
+       $this->db->select('owner_id');
+       $query = $this->db->get_where('teams', array('team_id' => $team_id));
+       $row = $query->row();
+       return $row->owner_id; 
+
+    }   
+    public function get_team_details($team_id) 
+    { 
+       $query = $this->db->get_where('teams', array('team_id' => $team_id));
+       $row = $query->row();
+       return $row; 
+
+    }   
+/*    public function is_league_public($team_id) 
+    { 
+       $this->db->select('l.visibility');
+       $this->db->join('teams t', "t.team_id = $team_id AND t.u
+       $query = $this->db->get_where('leagues l', array('league_id' => $league_id));
+       
+       $row = $query->row();
+       return $row->visibility == LEAGUE_PUBLIC_VISIBILITY;  
+    }*/ 
 }

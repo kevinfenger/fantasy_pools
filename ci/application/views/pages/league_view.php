@@ -14,7 +14,7 @@
         <?php $i=1; foreach($teams as $team): ?> 
         <tr> 
           <td><?php echo $i; ?></td>
-          <td><?php echo $team['team_name']; ?></td> 
+          <td><a href="team?team_id=<?php echo $team['team_id']?>"><?php echo $team['team_name']; ?></a></td> 
           <td><?php echo 0 ?></td> 
           <?php $i++;?> 
         </tr>

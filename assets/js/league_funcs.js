@@ -59,7 +59,11 @@ $(function() {
              , success: function(msg) 
                         {
                             if(msg == 'success') {
-                               window.location.replace("http://fantasy.kevinfenger.com/league?league_id="+$("#league_id").val()); 
+                                pathArray = window.location.href.split( '/' );
+                                protocol = pathArray[0];
+                                host = pathArray[2];
+                                url = protocol + '//' + host;
+                                window.location.replace(url+"/league?league_id="+$("#league_id").val()); 
                             } 
                             else { 
                                   $("#unable_to_register_txt").css({ "color": "red", "font-weight":"normal","font-style":"italic","font-size":"14px"}); 
@@ -87,7 +91,11 @@ $(function() {
              , dataType: "json" 
              , success: function(msg) 
                         {
-                            window.location.replace("http://fantasy.kevinfenger.com/league?league_id="+msg['league_id']); 
+                            pathArray = window.location.href.split( '/' );
+                            protocol = pathArray[0];
+                            host = pathArray[2];
+                            url = protocol + '//' + host;
+                            window.location.replace(url+"/league?league_id="+msg['league_id']); 
                         }
            });
         }

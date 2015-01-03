@@ -55,7 +55,7 @@ class League_model extends CI_Model {
     } 
     public function get_teams_in_league($league_id) 
     { 
-       $this->db->select('t.team_name, u.first_name, u.last_name');
+       $this->db->select('t.team_name, t.team_id, u.first_name, u.last_name');
        $this->db->join('users u', 't.owner_id = u.id'); 
        $query = $this->db->get_where('teams t', array('t.league_id' => $league_id));
 
@@ -124,11 +124,14 @@ class League_model extends CI_Model {
        
        return $query->num_rows() > 0; 
     } */ 
-    public function is_league_public($league_id) 
-    { 
+    public function is_league_public($league_id=null) 
+    {
        $this->db->select('visibility');
        $query = $this->db->get_where('leagues', array('league_id' => $league_id));
        
+       if ($query->num_rows() == 0) 
+           return false;
+  
        $row = $query->row();
        return $row->visibility == LEAGUE_PUBLIC_VISIBILITY;  
     }

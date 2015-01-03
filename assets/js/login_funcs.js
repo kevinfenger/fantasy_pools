@@ -9,12 +9,24 @@ $(function() {
     $('#fb_login').facebook_login({
           appId: '381563401983454',  
           permissions: 'read_stream,email',
-          onSuccess: function(msg) { window.location.replace("http://fantasy.kevinfenger.com/"); }
+          onSuccess: function(msg) { 
+              pathArray = window.location.href.split( '/' );
+              protocol = pathArray[0];
+              host = pathArray[2];
+              url = protocol + '//' + host;
+              window.location.replace(url); 
+          }
    });
    $('#fb_login_two').facebook_login({
           appId: '381563401983454',  
           permissions: 'read_stream,email', 
-          onSuccess: function(msg) { window.location.replace("http://fantasy.kevinfenger.com/"); }
+          onSuccess: function(msg) { 
+              pathArray = window.location.href.split( '/' );
+              protocol = pathArray[0];
+              host = pathArray[2];
+              url = protocol + '//' + host;
+              window.location.replace(url); 
+          }
    });
    $("#ca_link").click(function() {
        $("#ca_tab").addClass("active");
@@ -27,7 +39,13 @@ $(function() {
        $.ajax({ 
              type: "POST"
            , url:  "/user/logout"
-           , success: function(msg) { window.location.replace("http://fantasy.kevinfenger.com/"); }
+           , success: function(msg) { 
+                 pathArray = window.location.href.split( '/' );
+                 protocol = pathArray[0];
+                 host = pathArray[2];
+                 url = protocol + '//' + host;
+                 window.location.replace(url); 
+             }
        }); 
    });
    $("#local_login_button").click(function() { 
@@ -40,7 +58,11 @@ $(function() {
                         {
                               if(msg == 'success')
                               {
-                                  window.location.replace("http://fantasy.kevinfenger.com/"); 
+                                  pathArray = window.location.href.split( '/' );
+                                  protocol = pathArray[0];
+                                  host = pathArray[2];
+                                  url = protocol + '//' + host;
+                                  window.location.replace(url); 
                               }
                               else
                               {
@@ -67,7 +89,11 @@ $(function() {
                         {
                               if(msg == 'success')
                               {
-                                  window.location.replace("http://fantasy.kevinfenger.com/"); 
+                                  pathArray = window.location.href.split( '/' );
+                                  protocol = pathArray[0];
+                                  host = pathArray[2];
+                                  url = protocol + '//' + host;
+                                  window.location.replace(url); 
                               }
                               else
                               {
