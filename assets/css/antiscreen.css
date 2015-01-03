@@ -4,3 +4,6 @@
 .add-padding-top { 
     padding-top: 0px; 
 }
+.modal { 
+    display: none; 
+}

@@ -26,9 +26,8 @@ class League extends CI_Controller {
    	    $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'The league you are trying to view does not exist.'));
             return; 
         }
-        
         $user_id = $this->session->userdata('id') ? $this->session->userdata('id') : 0;
-        $is_public_league = $this->league_model->is_league_public($params['league_id']); 
+        $is_public_league = $this->league_model->is_league_public($params['league_id']);
         if (!$user_id) { 
             if (!$is_public_league) {
  	        $this->stencil->title('League Viewing Issues');
@@ -37,6 +36,12 @@ class League extends CI_Controller {
                                                                                                                           member of this league -- please log in to view the page. '));
                 return; 
             } 
+            $league_details = $this->league_model->get_league_details($league_id); 
+            $data['name'] = $league_details['name']; 
+            $data['teams'] = $this->league_model->get_teams_in_league($league_id);
+            $this->stencil->slice(array('sidebar' => 'sidebar_no_team'));
+            $this->stencil->paint('league_view', $data);
+            return; 
         }
         else { 
             $is_league_member = $this->league_model->is_league_member($league_id, $user_id);
@@ -47,7 +52,11 @@ class League extends CI_Controller {
             }
             if (!$is_league_member && $is_public_league) { 
                 // Load up the page, but do not load up the sidebar with team information
-                print 'is not a league member, but is a public league'; 
+		$league_details = $this->league_model->get_league_details($league_id); 
+		$data['name'] = $league_details['name']; 
+		$data['teams'] = $this->league_model->get_teams_in_league($league_id);
+		$this->stencil->slice(array('sidebar' => 'sidebar_no_team'));
+		$this->stencil->paint('league_view', $data);
                 return;  
             } 
             if ($is_league_member) { 

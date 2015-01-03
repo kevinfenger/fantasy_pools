@@ -83,3 +83,6 @@ li.right {
 .add-padding-top { 
     padding-top: 60px; 
 }
+.modal { 
+    display: none; 
+}
