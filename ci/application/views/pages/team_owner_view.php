@@ -2,7 +2,7 @@
   <div class="span8">
     <div id="team_id_holder" style="display:none" value=<?php echo $team_id;?>></div>
     <h3><a href="league?league_id=<?php echo $league_id?>"><?php echo $league_name; ?></a></h3>
-    <h4><?php echo $team_name; ?></h4>
+    <h4><?php echo $team_details->team_name . ' (' . $team_details->first_name . ' ' . $team_details->last_name . ')'; ?></h4>
     <div id="no-more-tables"> 
     <table id="team_info" class="table table-striped">
       <thead>

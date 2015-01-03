@@ -54,17 +54,35 @@ class League_model extends CI_Model {
        return $query->row_array(); 
     } 
     public function get_teams_in_league($league_id) 
-    { 
+    {
+  
        $this->db->select('t.team_name, t.team_id, u.first_name, u.last_name');
-       $this->db->join('users u', 't.owner_id = u.id'); 
+       $this->db->join('users u', 't.owner_id = u.id');
        $query = $this->db->get_where('teams t', array('t.league_id' => $league_id));
-
-       return $query->result_array(); 
-    } 
+       foreach ($query->result() as $result) {
+           $total_points = $this->get_team_total_points($result->team_id); 
+           $results[] = array('first_name' => $result->first_name, 
+                              'last_name'  => $result->last_name, 
+                              'team_name'  => $result->team_name, 
+                              'team_id'    => $result->team_id,  
+                              'total_points' => $total_points);          
+       }
+       usort($results, function($a, $b) { return $a['total_points'] < $b['total_points'];  } );
+       return $results; 
+    }
+    private function get_team_total_points($team_id) 
+    {
+        $total_points = 0; 
+        $this->db->select('p.week_one_points, p.week_two_points, p.week_three_points, p.week_four_points');
+        $this->db->join('team2player t2p', "t2p.player_id = p.player_id AND t2p.team_id = $team_id"); 
+        $query = $this->db->get('players p');
+        foreach ($query->result() as $r) { 
+            $total_points += $r->week_one_points + $r->week_two_points + $r->week_three_points + $r->week_four_points; 
+        }
+        return $total_points; 
+    }  
     public function get_team($user_id, $league_id) 
     { 
-//       $this->db->select('league_id');
-//       $query = $this->db->get_where('teams', array('owner_id' => $user_id, 'league_id' => $league_id));
          $this->db->join('league2position l2p',"p.position_id = l2p.position_id AND l2p.league_id = $league_id");
          $query = $this->db->get_where('positions p');
          $positions = $query->result_array(); 

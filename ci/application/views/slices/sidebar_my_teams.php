@@ -1,4 +1,4 @@
-  <div class="span4">
+  <div class="span3">
     <h2>My Teams</h2>
     <ul class="thumbnails">
       <?php foreach($user_teams as $team): ?>

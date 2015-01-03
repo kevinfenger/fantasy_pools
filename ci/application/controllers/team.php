@@ -38,6 +38,7 @@ class Team extends CI_Controller {
                 $this->stencil->js('league_funcs');
                 $data['league_name'] = $league_details['name']; 
                 $data['league_id'] = $league_details['league_id']; 
+                $data['team_details'] = $team_details; 
                 $data['team_id'] = $team_details->team_id; 
                 $data['team_name'] = $team_details->team_name; 
                 $data['team_players'] = $this->league_model->get_team($user_id, $league_id); 
@@ -48,6 +49,7 @@ class Team extends CI_Controller {
                     $team_user_id = $this->team_model->get_team_user_id($team_id); 
                     $data['league_name'] = $league_details['name']; 
                     $data['league_id'] = $league_details['league_id']; 
+                    $data['team_details'] = $team_details; 
                     $data['team_id'] = $team_details->team_id; 
                     $data['team_name'] = $team_details->team_name; 
                     $data['team_players'] = $this->league_model->get_team($team_user_id, $league_id); 

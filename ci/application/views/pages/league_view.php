@@ -15,7 +15,7 @@
         <tr> 
           <td><?php echo $i; ?></td>
           <td><a href="team?team_id=<?php echo $team['team_id']?>"><?php echo $team['team_name']; ?></a></td> 
-          <td><?php echo 0 ?></td> 
+          <td><?php echo $team['total_points']; ?></td> 
           <?php $i++;?> 
         </tr>
         <?php endforeach; ?>

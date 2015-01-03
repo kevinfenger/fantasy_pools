@@ -65,8 +65,10 @@ class Team_model extends CI_Model {
 
     }   
     public function get_team_details($team_id) 
-    { 
-       $query = $this->db->get_where('teams', array('team_id' => $team_id));
+    {
+       $this->db->select('t.*, u.first_name, u.last_name'); 
+       $this->db->join('users u', 'u.id = t.owner_id'); 
+       $query = $this->db->get_where('teams t', array('team_id' => $team_id));
        $row = $query->row();
        return $row; 
 
