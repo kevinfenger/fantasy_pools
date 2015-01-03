@@ -10,7 +10,7 @@ class Team_model extends CI_Model {
        if (!$user_id)
            return null;
  
-       $this->db->select('t.team_name, t.team_image, l.name, l.league_id');
+       $this->db->select('t.team_name, t.team_id, t.team_image, l.name, l.league_id');
        $this->db->join('leagues l', 'l.league_id = t.league_id'); 
        $query = $this->db->get_where('teams t', array('t.owner_id' => $user_id));
 
