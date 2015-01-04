@@ -28,11 +28,11 @@
               <?php endif; ?> 
           </td>
           <td data-title="Team" class="player_team"><?php echo $tm['player']['pro_team']; ?></td> 
-          <td data-title="W1 Points">0</td>  
-          <td data-title="W2 Points">0</td>  
-          <td data-title="W3 Points">0</td>  
-          <td data-title="W4 Points">0</td>  
-          <td data-title="Total Points">0</td> 
+          <td data-title="W1 Points"><?php echo $tm['player']['week_one_points']; ?></td>  
+          <td data-title="W2 Points"><?php echo $tm['player']['week_two_points']; ?></td>  
+          <td data-title="W3 Points"><?php echo $tm['player']['week_three_points']; ?></td>  
+          <td data-title="W4 Points"><?php echo $tm['player']['week_four_points']; ?></td>  
+          <td data-title="Total Points"><?php echo $tm['player']['week_one_points'] + $tm['player']['week_two_points'] + $tm['player']['week_three_points'] + $tm['player']['week_four_points']; ?></td> 
           <?php if (strtotime(PLAYERS_VIEWABLE_DATETIME) > time(null)): ?>
           <td><?php if ($tm['player']): ?>
                 <button class="btn btn-primary btn-mini sel_play" data-toggle="modal" data-target="#choose_player_modal" type="button">Change</button>
