@@ -62,6 +62,8 @@ class League extends CI_Controller {
             if ($is_league_member) { 
                 // Load up the page, and load up team info
                 $league_details = $this->league_model->get_league_details($league_id); 
+         	$this->stencil->slice('header_league_nav');
+	        $this->stencil->layout('league_member_layout');
                 $this->stencil->js('league_funcs');
                 $data['name'] = $league_details['name']; 
                 $data['teams'] = $this->league_model->get_teams_in_league($league_id);
@@ -126,7 +128,7 @@ class League extends CI_Controller {
     { 
 	$this->stencil->slice('head');
 	$this->stencil->slice('header');
-	$this->stencil->layout('create_league_layout');
+	$this->stencil->layout('standard_layout');
 	$this->stencil->css('font-awesome');
         if ($this->session->userdata('id')) {  
  	    $this->stencil->title('Join League');
@@ -143,7 +145,7 @@ class League extends CI_Controller {
     {
 	$this->stencil->slice('head');
 	$this->stencil->slice('header');
-	$this->stencil->layout('create_league_layout');
+	$this->stencil->layout('standard_layout');
 	$this->stencil->css('font-awesome');
         $this->stencil->js('league_funcs');
         

@@ -60,16 +60,37 @@ class League_model extends CI_Model {
        $this->db->join('users u', 't.owner_id = u.id');
        $query = $this->db->get_where('teams t', array('t.league_id' => $league_id));
        foreach ($query->result() as $result) {
-           $total_points = $this->get_team_total_points($result->team_id); 
+           $total_points = $this->get_team_total_points($result->team_id);
+           $eliminated_players = $this->get_team_eliminated_players($result->team_id); 
+           $total_players = $this->get_total_players_for_league($league_id);  
            $results[] = array('first_name' => $result->first_name, 
                               'last_name'  => $result->last_name, 
                               'team_name'  => $result->team_name, 
-                              'team_id'    => $result->team_id,  
+                              'team_id'    => $result->team_id, 
+                              'remaining_players' => $total_players - $eliminated_players,  
                               'total_points' => $total_points);          
        }
        usort($results, function($a, $b) { return $a['total_points'] < $b['total_points'];  } );
        return $results; 
     }
+    private function get_total_players_for_league($league_id) 
+    {  
+        $this->db->where("league_id = $league_id");
+        return $this->db->count_all_results('league2position'); 
+    }
+    private function get_team_eliminated_players($team_id) 
+    { 
+        $eliminated_players = 0; 
+        $this->db->select('p.eliminated');
+        $this->db->join('team2player t2p', "t2p.player_id = p.player_id AND t2p.team_id = $team_id"); 
+        $query = $this->db->get('players p');
+        foreach ($query->result() as $r) { 
+           if ($r->eliminated) 
+               $eliminated_players++; 
+        }
+        return $eliminated_players; 
+
+    } 
     private function get_team_total_points($team_id) 
     {
         $total_points = 0; 

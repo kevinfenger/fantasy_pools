@@ -17,7 +17,11 @@
       </thead>
       <tbody>
         <?php foreach ($my_team as $tm):?>
+        <?php if ($tm['player']['eliminated']): ?> 
+        <tr class="player_position danger" value=<?php echo $tm['player']['player_id']; ?>> 
+        <?php else:?> 
         <tr class="player_position" value=<?php echo $tm['player']['player_id']; ?>> 
+        <?php endif;?> 
           <td data-title="Position" class="player_position"><?php echo $tm['position']['position_short_description']; ?></td> 
           <td data-title="Name" class="player_name"><?php if ($tm['player']): ?>
               <p><?php echo $tm['player']['full_name']; ?></p>

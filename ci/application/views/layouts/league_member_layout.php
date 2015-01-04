@@ -11,9 +11,10 @@
 
 	<header>
 		<?php echo $header; ?>
+		<?php echo $header_league_nav; ?>
 	</header>
 
-	<div class="container add-padding-top">
+	<div class="container">
 		<?php echo $content; ?>
 	</div>
 

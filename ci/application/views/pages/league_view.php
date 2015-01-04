@@ -6,8 +6,9 @@
       <thead>
         <tr>
           <th>Rank</th>
-          <th>Team Name</th>
-          <th>Total Points</th>
+          <th>Name</th>
+          <th>Points</th>
+          <th>Players Left</th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +17,7 @@
           <td><?php echo $i; ?></td>
           <td><a href="team?team_id=<?php echo $team['team_id']?>"><?php echo $team['team_name']; ?></a></td> 
           <td><?php echo $team['total_points']; ?></td> 
+          <td><?php echo $team['remaining_players']; ?></td> 
           <?php $i++;?> 
         </tr>
         <?php endforeach; ?>

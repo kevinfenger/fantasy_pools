@@ -15,7 +15,7 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		$this->stencil->title('Login');
-		$this->stencil->layout('login_layout');
+		$this->stencil->layout('standard_layout');
 		$this->stencil->css('font-awesome');
 		$this->stencil->data('welcome_text', 'Welcome to Stencil!');
 		$this->stencil->paint('login_view');
