@@ -3,8 +3,13 @@ package fantasy.fantasypoolsv1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +25,8 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 
+import java.io.File;
+import java.security.MessageDigest;
 import java.util.Arrays;
 
 /**
@@ -36,11 +43,43 @@ public class FacebookFragment extends Fragment {
         authButton.setFragment(this);
         authButton.setReadPermissions(Arrays.asList("email"));
 
+        Bundle args = getArguments();
+        Boolean doLogout = false;
 
-        final Button button = (Button) view.findViewById(R.id.normalLoginButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        if (args != null)
+            doLogout= getArguments().getBoolean("logout");
+
+        if (doLogout) {
+            Session.getActiveSession().closeAndClearTokenInformation();
+        }
+        else {
+            SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+            String defaultValue = getResources().getString(R.string.username);
+            String username = sharedPref.getString(getString(R.string.username), defaultValue);
+
+            if (username.length() > 0 && !username.equalsIgnoreCase("username")) {
+                defaultValue = getResources().getString(R.string.password);
+                String password = sharedPref.getString(getString(R.string.password), defaultValue);
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                String loginPostString = "password=" + password;
+                loginPostString += "&email=" + username;
+                intent.putExtra("loginPostString", loginPostString);
+                startActivity(intent);
+            }
+        }
+        final Button normalLoginButton = (Button) view.findViewById(R.id.normalLoginButton);
+        normalLoginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LocalLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final Button createAccountButton = (Button) view.findViewById(R.id.createAccountButton);
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), WebViewActivity.class);
+                intent.putExtra("createAccount", true);
                 startActivity(intent);
             }
         });
@@ -49,14 +88,6 @@ public class FacebookFragment extends Fragment {
     }
     private static final String TAG = "MainFragment";
 
-    private void showShortToast(String message) {
-        Context context = this.getActivity();
-        CharSequence text = message;
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
     private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (state.isOpened()) {
             String token = session.getAccessToken();
