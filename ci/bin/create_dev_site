@@ -1,8 +1,6 @@
 #!/bin/bash
 
 vhroot='/var/www'
-#mysql='/home/mysql/current/bin/mysql'
-#mysqla='/home/mysql/current/bin/mysqladmin'
 
 print_usage()
 {
@@ -74,10 +72,7 @@ create_vhost_entry()
             error_and_exit "Error Vhost could not be added"
         fi
 }
-#set_site_url()
-#{
-#sed "s/sharpgroups.rightnow.com/$SITE.sharpgroups.rightnowtech.com" $SOURCE/application/config/config.php > $SOURCE/application/config/config.php
-#}
+
 SOURCE=$1
 SITE=$2
 if [ $# -ne 2 ]; then
@@ -94,16 +89,9 @@ sudo a2ensite $SITE
 
 sudo service apache2 restart
 cp $1/bin/index.php $vhroot/$2/.
-#cp $1/bin/apitest.php $vhroot/$2/.
 cp $1/bin/.htaccess $vhroot/$SITE/.
 ln -s $1/application $vhroot/$SITE/application
 ln -s $1/system $vhroot/$SITE/system
-#ln -s $1/htdocs $vhroot/$2/htdocs
-
-#$mysqla -f drop $2 2>&1 | egrep "Database.*dropped|doesn't exist" > /dev/null 2>&1  || error_and_exit "Failed database drop of $2"
-#$mysqla create $2 > /dev/null;
-#$mysql -e "GRANT ALL ON *.* TO '$USER'@'localhost';"
-#curl http://$2.sharpgroups.rightnowtech.com/migrate
 
 echo "    "
 echo "New site was created and can be accessed from :"
