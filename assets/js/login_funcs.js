@@ -7,8 +7,8 @@ $(function() {
     $("#last_name").addClass('invalid'); */ 
 
     $('#fb_login').facebook_login({
-          appId: '381563401983454',  
-          permissions: 'read_stream,email',
+          appId: '201921766683441',  
+          permissions: 'email',
           onSuccess: function(msg) { 
               pathArray = window.location.href.split( '/' );
               protocol = pathArray[0];
@@ -18,8 +18,8 @@ $(function() {
           }
    });
    $('#fb_login_two').facebook_login({
-          appId: '381563401983454',  
-          permissions: 'read_stream,email', 
+          appId: '201921766683441',  
+          permissions: 'email', 
           onSuccess: function(msg) { 
               pathArray = window.location.href.split( '/' );
               protocol = pathArray[0];
