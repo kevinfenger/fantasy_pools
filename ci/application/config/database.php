@@ -73,11 +73,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$dbhost = $_SERVER['RDS_HOSTNAME'];
+$dbport = $_SERVER['RDS_PORT'];
+$dbname = $_SERVER['RDS_DB_NAME'];
+$dbuser = $_SERVER['RDS_USERNAME'];
+$dbpass = $_SERVER['RDS_PASSWORD'];
+
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
+	'dsn'	=> "mysql:host={$dbhost};port={$dbport};dbname={$dbname}",
+	'hostname' => $dbhost,
+	'username' => $dbuser,
+	'password' => $dbpass,
 	'database' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
