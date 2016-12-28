@@ -80,7 +80,7 @@ $dbuser = $_SERVER['RDS_USERNAME'];
 $dbpass = $_SERVER['RDS_PASSWORD'];
 
 $db['default'] = array(
-	'dsn'	=> "mysql:host={$dbhost};port={$dbport};dbname={$dbname}",
+	'dsn'	=> "mysql:host={$dbhost};port={$dbport};dbname=fantasy",
 	'hostname' => $dbhost,
 	'username' => $dbuser,
 	'password' => $dbpass,
