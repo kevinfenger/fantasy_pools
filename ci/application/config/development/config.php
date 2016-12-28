@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://fantasytest.kevinfenger.com/';
+$config['base_url']	= 'https://fpforfun.com/';
 
 /*
 |--------------------------------------------------------------------------
