@@ -27,12 +27,12 @@
                 <div class="form-group"> 
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3"> 
-                      <button id="local_login_button" class="btn btn-success">Login</button>
+                      <button id="local_login_button" class="btn btn-block btn-success">Login</button>
                     </div>
                   </div> 
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3"> 
-                      <a class="btn" href='#' id='fb_login'><img src='/assets/img/fb_login.png'></img></a>
+                      <a class="btn btn-block btn-facebook" href='#' id='fb_login'><img src='/assets/img/fb_login.png'></img></a>
                     </div>
                   </div> 
                   <div class="form-group">

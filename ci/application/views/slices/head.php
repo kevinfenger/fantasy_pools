@@ -11,7 +11,7 @@
 <?php echo favicons(); ?>
 
 <!-- crayons and paint -->	
-<?php echo add_css(array('bootstrap.min', '1-col-portfolio', 'core')); ?> 
+<?php echo add_css(array('bootstrap.min', '1-col-portfolio', 'core', 'bootstrap-social')); ?> 
 <?php echo $css; ?>
 
 <!-- magical wizardry -->
