@@ -27,7 +27,7 @@ class User_model extends CI_Model {
     }
     function local_login($input) 
     {
-       print_r($input); 
+       /*print_r($input); 
        print_r($this->db);  
        $this->db->select('first_name, last_name, id, password, salt'); 
        $query = $this->db->get_where('users', array('email' => $input['email'])); 
@@ -41,7 +41,7 @@ class User_model extends CI_Model {
                                               'first_name' => $user['first_name'],
                                               'last_name'  => $user['last_name']));    
            return 'success'; 
-       }   
+       } */   
        return 'failed to log this user in';  
     }
     function create_user($input) 
