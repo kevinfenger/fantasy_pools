@@ -48,7 +48,7 @@
                   </div>
                 </div>
               </form>
-              <form id="register-form" action='javascript:void(0);'> 
+              <form id="register-form" action='javascript:void(0);' style="display: none;"> 
                 <div class="form-group">
 	          <input type="text" id='first_name' name='first_name' class="form-control" pattern="[A-Za-z-0-9]+" value="<?php echo set_value('first_name'); ?>" placeholder="First Name" tabindex="1"/>
                   <span id="first_name_verify_txt" class="verify"></span>

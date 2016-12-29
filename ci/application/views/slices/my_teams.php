@@ -5,10 +5,22 @@
       </h1>
   </div>
 </div>
-<div class="row"> 
-    <a href="league/join" class="btn btn-block btn-primary">Join Existing</a>
-    <a href="league/create_pff_league" class="btn btn-block">Create New</a>
+<div class="row">
+    <div class="col-sm-3">
+      <h5>Have a league id/password or join a public league</h5> 
+    </div>
+    <div class="col-sm-3"> 
+      <a href="league/join" class="btn btn-primary col-sm-3">Join Existing</a>
+    </div>
 </div> 
+<div class="row">
+  <div class="col-sm-3">
+    <h5>Create a new league, invite friends, enjoy!</h5> 
+  </div>
+  <div class="col-sm-3">
+    <a href="league/create_pff_league" class="btn btn-primary">Create New</a>
+  </div> 
+</div>
 <?php if (count($user_teams) > 0): ?>
 <div class="row">
   <div class="col-lg-12">
