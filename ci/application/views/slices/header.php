@@ -29,8 +29,15 @@
                <?php
                    }
                    else 
-                       echo anchor(base_url('login'), 'Login', array('class' => 'navbar-brand')); 
+                   { 
                ?>
+                     <li>
+                       <a href="<?php echo base_url('login'); ?>">Login</a>
+                     </li>
+               <?php 
+                   }
+               ?>
+               
        </ul>
     </div> 
   </div> 
