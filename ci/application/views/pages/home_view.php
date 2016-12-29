@@ -2,7 +2,7 @@
   <h1>Fantasy Pools</h1>
 </div>
 <div class="row">
-  <?php echo $sidebar; ?>
+  <?php echo $content; ?>
   <div class="span4">
     <h2>Games</h2>
     <ul class="thumbnails">

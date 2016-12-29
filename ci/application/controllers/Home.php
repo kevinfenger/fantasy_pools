@@ -18,9 +18,9 @@ class Home extends CI_Controller {
 		$this->stencil->layout('home_layout');
 		$this->stencil->css('font-awesome');
                 if ($this->session->userdata('id'))  
-                    $this->stencil->slice(array('sidebar' => 'sidebar_my_teams'));
+                    $this->stencil->slice(array('content' => 'my_teams'));
                 else 
-                    $this->stencil->slice(array('sidebar' => 'sidebar_welcome'));
+                    $this->stencil->slice(array('content' => 'welcome'));
 		$this->stencil->paint('home_view');
 	}
 
