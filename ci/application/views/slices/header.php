@@ -1,12 +1,11 @@
-<div class="navbar navbar-static-top">
-    <div class="navbar-inner">      
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
          <div class="container">
          <!--a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
 	 </a-->
-	 <a class="brand" href="<?php echo base_url(); ?>">Home</a>
+             <a class="brand" href="<?php echo base_url(); ?>">Home</a>
 	    <!--div class="nav-collapse"-->
 	       <!--ul class="nav">
 	          <li class="left"><?php echo anchor('home/groups', 'Groups'); ?></li>
@@ -41,5 +40,4 @@
               </ul>
 	    <!--/div--><!--/.nav-collapse -->
          </div> 
-     </div>
 </div>
