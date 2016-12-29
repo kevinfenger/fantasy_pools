@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="dropdownMenu1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdownMenu1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -19,12 +19,11 @@
                ?>
                       <li class="dropdown"> 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                          <img class='small_photo' src="<?php echo $avatar_url?>">
-                          <span class='header_name'><?php echo $first_name; ?></span>
+                          <?php echo $first_name; ?>
                           <span class="caret"></span>
                         </a> 
                         <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
+                          <li id='logout'><a href="#">Logout</a></li>
                         </ul>
                       </li> 
                <?php
