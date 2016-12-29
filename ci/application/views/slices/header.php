@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
          <!--a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 	    <span class="icon-bar"></span>
@@ -40,4 +40,4 @@
               </ul>
 	    <!--/div--><!--/.nav-collapse -->
      </div>
-</nav>
+</div>
