@@ -1,15 +1,17 @@
-  <div class="span3">
-    <h2>My Teams</h2>
-    <ul class="thumbnails">
       <?php foreach($user_teams as $team): ?>
-      <li class="row" style="clear:left">  
-          <a class="pull-left thumbnail" href="#"><img data-src="holder.js/64x64" style="width:64px; height:64px"></a>
-          <div class="pull-left caption"> 
-              <h4><a href="league?league_id=<?php echo $team['league_id']?>"><?php print $team['name']; ?></a></h4>
-              <h6 class="header-tab-left"><a href="team?team_id=<?php echo $team['team_id'];?>"><?php print $team['team_name']; ?></a></h6>
+      <div class="row">  
+          <div class="col-md-7">
+            <a href="#">
+              <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+            </a>
+          </div>
+          <div class="col-md-7">
+              <h3><?php print $team['name']; ?></h3> 
+              <h4><?php print $team['team_name'];?></h4>
+              <p>jibber jabber</p> 
+              <a class="btn btn-primary" href="league?league_id=<?php echo $team['league_id']?>">View League</a>
+              <a class="btn btn-primary" ref="team?team_id=<?php echo $team['team_id'];?>">View Team</a>
           </div> 
-      </li>
-      <br />
+      </div>
+      <hr>
       <?php endforeach; ?> 
-    </ul>  
-  </div>

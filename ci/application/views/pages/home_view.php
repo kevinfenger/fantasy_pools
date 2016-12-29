@@ -1,7 +1,15 @@
-<div class="hero-unit">
-  <h1>Fantasy Pools</h1>
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Fantasy Pools
+                <small>My Teams</small>
+            </h1>
+        </div>
+    </div>
+    <?php echo $content;?> 
 </div>
-<div class="row">
+<!--div class="row">
   <?php echo $content; ?>
   <div class="span4">
     <h2>Games</h2>
@@ -34,4 +42,4 @@
     <h2>Headlines</h2>
     
   </div>
-</div> 
+</div--> 
