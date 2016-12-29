@@ -1,6 +1,18 @@
 <div class="row">
   <div class="col-lg-12">
-      <h1 class="page-header">Fantasy Pools
+      <h1 class="page-header">FP
+          <small>Join/Create</small>
+      </h1>
+  </div>
+</div>
+<div class="row"> 
+    <a href="league/join" class="btn btn-block btn-primary">Join Existing</a>
+    <a href="league/create_pff_league" class="btn btn-block">Create New</a>
+</div> 
+<?php if (count($user_teams) > 0): ?>
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">FP
           <small>My Teams</small>
       </h1>
   </div>
@@ -22,3 +34,4 @@
 </div>
 <hr>
 <?php endforeach; ?> 
+<?php endif; ?> 
