@@ -12,7 +12,7 @@
 
 <!-- crayons and paint -->	
 <?php echo //add_css(array('bootstrap', 'bootstrap-responsive', 'style')); 
-          add_css(array('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'));
+          add_css(array('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'));
           //add_css(array('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css', 'core'));
 //          add_css(array('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css', 'style'));
 ?>
