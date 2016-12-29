@@ -1,7 +1,60 @@
 <div class="login-unit" id="loginModal">
   <!--div class="modal-body modal-noscrollbar"-->
   <div class="row">
-    <div class="well">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+	  <div class="row">
+	    <div class="col-xs-6">
+	      <a href="#" class="active" id="login-form-link">Login</a>
+	    </div>
+	    <div class="col-xs-6">
+	      <a href="#" id="register-form-link">Register</a>
+	    </div>
+	  </div>
+	  <hr>
+	</div>
+        <div class="panel-body"> 
+          <div class="row">
+            <div class="col-lg-12">
+	      <form id="login-form" action='javascript:void(0);'>
+                <div class="form-group"> 
+	          <input type="text" id="username" name="username" placeholder="Username" value="" tabindex="1" class="form-control">
+                </div> 
+                <div class="form-group"> 
+	          <input type="password" id="password_local_login" name="password_local_login" tabindex="2" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group"> 
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3"> 
+                      <button id="local_login_button" class="btn btn-success">Login</button>
+                    </div>
+                  </div> 
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3"> 
+                      <a class="btn" href='#' id='fb_login'><img src='/assets/img/fb_login.png'></img></a>
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="text-center">
+                          <a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form id"register-form" action='javascript:void(0);'> 
+              </form> 
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div> 
+    <!--div class="well">
       <ul class="nav nav-tabs">
         <li id="login_tab" class="active"><a href="#login" data-toggle="tab">Login</a></li>
 	<li id="ca_tab"><a href="#create" data-toggle="tab">Create Account</a></li>
@@ -73,5 +126,5 @@
 	</div>
       </div>
     </div>
-  </div>
+  </div-->
 </div>
