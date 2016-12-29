@@ -25,12 +25,12 @@
 </div>
 <?php foreach($user_teams as $team): ?>
 <div class="row">  
-    <div class="col-md-7">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+    <div class="col-md-3">
+      <a href="league?league_id=<?php echo $team['league_id']?>">
+        <img class="img-responsive" src="../assets/img/default_fb_league.jpg" alt="">
       </a>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <h3><?php print $team['name']; ?></h3> 
         <h4><?php print $team['team_name'];?></h4>
         <div class="row"> 
