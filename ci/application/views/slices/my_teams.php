@@ -33,9 +33,16 @@
     <div class="col-md-5">
         <h3><?php print $team['name']; ?></h3> 
         <h4><?php print $team['team_name'];?></h4>
-        <p>jibber jabber</p> 
-        <a class="btn btn-primary" href="league?league_id=<?php echo $team['league_id']?>">View League</a>
-        <a class="btn btn-primary" href="team?team_id=<?php echo $team['team_id'];?>">View Team</a>
+        <div class="row"> 
+          <div class="col-sm-6">
+            <a class="btn btn-default btn-block" href="league?league_id=<?php echo $team['league_id']?>">View League</a>
+          </div>
+        </div>
+        <div class="row top10"> 
+          <div class="col-sm-6">
+            <a class="btn btn-default btn-block" href="team?team_id=<?php echo $team['team_id'];?>">View Team</a>
+          </div>
+        </div>
     </div> 
 </div>
 <hr>
