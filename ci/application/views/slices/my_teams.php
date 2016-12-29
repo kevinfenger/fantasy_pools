@@ -7,18 +7,18 @@
 </div>
 <div class="row">
     <div class="col-sm-3">
-      <h5>Have a league id/password or join a public league</h5> 
+      <h5>Join a public or private league.</h5> 
     </div>
-    <div class="col-sm-3"> 
-      <a href="league/join" class="btn btn-primary col-sm-3">Join Existing</a>
+    <div class="col-sm-4"> 
+      <a href="league/join" class="btn btn-default btn-block">Join Existing</a>
     </div>
 </div> 
 <div class="row">
   <div class="col-sm-3">
-    <h5>Create a new league, invite friends, enjoy!</h5> 
+    <h5>Create a new league.</h5> 
   </div>
-  <div class="col-sm-3">
-    <a href="league/create_pff_league" class="btn btn-primary">Create New</a>
+  <div class="col-sm-4">
+    <a href="league/create_pff_league" class="btn btn-default btn-block">Create New</a>
   </div> 
 </div>
 <?php if (count($user_teams) > 0): ?>
