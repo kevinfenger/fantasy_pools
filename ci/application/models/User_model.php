@@ -27,9 +27,6 @@ class User_model extends CI_Model {
     }
     function local_login($input) 
     {
-       echo 'blammmm';
-       echo print_r($input); 
-       echo print_r($this->db);  
        $this->db->select('first_name, last_name, id, password, salt'); 
        $query = $this->db->get_where('users', array('email' => $input['email'])); 
        if ($query->num_rows() == 0) 
