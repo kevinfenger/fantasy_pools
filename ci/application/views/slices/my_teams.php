@@ -10,7 +10,7 @@
               <h4><?php print $team['team_name'];?></h4>
               <p>jibber jabber</p> 
               <a class="btn btn-primary" href="league?league_id=<?php echo $team['league_id']?>">View League</a>
-              <a class="btn btn-primary" ref="team?team_id=<?php echo $team['team_id'];?>">View Team</a>
+              <a class="btn btn-primary" href="team?team_id=<?php echo $team['team_id'];?>">View Team</a>
           </div> 
       </div>
       <hr>
