@@ -6,18 +6,12 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-sm-3">
-      <h5>Join a public or private league.</h5> 
-    </div>
-    <div class="col-sm-4"> 
+    <div class="col-sm-5"> 
       <a href="league/join" class="btn btn-default btn-block">Join Existing</a>
     </div>
 </div> 
-<div class="row">
-  <div class="col-sm-3">
-    <h5>Create a new league.</h5> 
-  </div>
-  <div class="col-sm-4">
+<div class="row top10">
+  <div class="col-sm-5">
     <a href="league/create_pff_league" class="btn btn-default btn-block">Create New</a>
   </div> 
 </div>
