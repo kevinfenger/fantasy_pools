@@ -1,3 +1,6 @@
+html, body, .container-table {
+    height: 100%;
+}
 .home {
     background: url('../img/bg_image.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -5,4 +8,11 @@
     background-size: cover;
     -o-background-size: cover;
     height:100%;
+}
+.container-table { 
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
 }
