@@ -16,11 +16,17 @@
                    {
                       $avatar_url = isset($this->session->userdata['avatar_url']) ? $this->session->userdata['avatar_url'] : null;
                       $first_name = isset($this->session->userdata['first_name']) ? $this->session->userdata['first_name'] : null;
-               ?> 
-                      <button class='navbar-toggle' data-toggle='collapse' data-target='dropdownMenu1'>
-                        <img class='small_photo' src="<?php echo $avatar_url?>">
-                        <span class='header_name'><?php echo $first_name; ?></span>
-                      </button> 
+               ?>
+                      <li class="dropdown"> 
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          <img class='small_photo' src="<?php echo $avatar_url?>">
+                          <span class='header_name'><?php echo $first_name; ?></span>
+                          <span class="caret"></span>
+                        </a> 
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                        </ul>
+                      </li> 
                <?php
                    }
                    else 
