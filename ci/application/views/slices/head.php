@@ -11,6 +11,7 @@
 <?php echo favicons(); ?>
 
 <!-- crayons and paint -->	
+<?php echo add_css(array('bootstrap-min')); ?> 
 
 <!-- magical wizardry -->
 <?php echo jquery('1.11.1'); ?>
