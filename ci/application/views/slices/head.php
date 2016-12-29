@@ -21,5 +21,5 @@
 <!-- magical wizardry -->
 <?php echo jquery('1.9.1'); ?>
 <?php echo shiv(); ?>
-<?php echo add_js(array('bootstrap.min', 'scripts', 'fb_login', 'login_funcs')); ?>
+<?php echo add_js(array('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'scripts', 'fb_login', 'login_funcs')); ?>
 <?php echo $js; ?>
