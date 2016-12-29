@@ -32,7 +32,7 @@
                   </div> 
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3"> 
-                      <a class="btn btn-block btn-facebook" href='#' id='fb_login'><img src='/assets/img/fb_login.png'></img></a>
+                      <a class="btn btn-block btn-social btn-facebook" href='#' id='fb_login'><span class="fa fa-facebook"></span>Sign in with Facebook</a>
                     </div>
                   </div> 
                   <div class="form-group">
