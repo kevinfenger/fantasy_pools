@@ -17,6 +17,13 @@ html, body, .container, .container-table {
     display: table-cell;
     vertical-align: middle;
 }
+.vertical-center-row h1 { 
+    font-size: 4.5em;
+    font-weight: 700;
+} 
+.vertical-center-row h3 { 
+    font-size: 20px;
+} 
 .container { 
     height: 100%; 
 }
