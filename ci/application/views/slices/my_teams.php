@@ -5,7 +5,7 @@
               <img class="img-responsive" src="http://placehold.it/700x300" alt="">
             </a>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-5">
               <h3><?php print $team['name']; ?></h3> 
               <h4><?php print $team['team_name'];?></h4>
               <p>jibber jabber</p> 
