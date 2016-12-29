@@ -12,6 +12,7 @@
 
 <!-- crayons and paint -->	
 <?php echo add_css(array('bootstrap.min', '1-col-portfolio')); ?> 
+<?php echo $css; ?>
 
 <!-- magical wizardry -->
 <?php echo jquery('1.11.1'); ?>
