@@ -15,8 +15,8 @@
                       echo "<span class='header_name'>$first_name</span>";
                       echo "<span class='caret'></span>";
                       echo "</button>";
-                      echo "<div class='collapse navbar-collapse' id=dropdownMenu1";
-                      echo "<ul class='dropdown-menu' role='menu' aria-labeledby='dropdownMenu1'>"; 
+                      echo "<div class='collapse navbar-collapse' id='dropdownMenu1'";
+                      echo "<ul class='nav navbar-nav'>"; 
                       echo "<li role='presentation'><a role='menuitem' href='#'>Groups</a></li>";
                       echo "<li role='presentation'><a role='menuitem' href='#'>Games</a></li>";
                       echo "<li role='presentation'><a role='menuitem' href='#'>Player Lists</a></li>";
