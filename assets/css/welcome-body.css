@@ -9,7 +9,8 @@ html, body, .container, .container-table {
     -o-background-size: cover;
     height:100%;
 }
-.container-table { 
+.container-table {
+    width: 100%;  
     display: table;
 }
 .vertical-center-row {
