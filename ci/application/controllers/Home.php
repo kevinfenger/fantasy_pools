@@ -20,6 +20,7 @@ class Home extends CI_Controller {
                 if ($this->session->userdata('id'))  
                     $this->stencil->slice(array('content' => 'my_teams'));
                 else 
+		    $this->stencil->css('welcome-body');
                     $this->stencil->slice(array('content' => 'welcome'));
 		$this->stencil->paint('home_view');
 	}
