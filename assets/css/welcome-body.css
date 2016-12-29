@@ -1,4 +1,4 @@
-html, body, .container-table {
+html, body, .container, .container-table {
     height: 100%;
 }
 .home {
@@ -15,4 +15,7 @@ html, body, .container-table {
 .vertical-center-row {
     display: table-cell;
     vertical-align: middle;
+}
+.container { 
+    height: 100%; 
 }
