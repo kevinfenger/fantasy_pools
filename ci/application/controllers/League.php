@@ -129,6 +129,7 @@ class League extends CI_Controller {
 	$this->stencil->slice('header');
 	$this->stencil->layout('standard_layout');
 	$this->stencil->css('font-awesome');
+        $this->stencil->js('join_league_funcs');
         if ($this->session->userdata('id')) {  
  	    $this->stencil->title('Join League');
             $leagues = $this->league_model->get_public_leagues(); 
@@ -167,7 +168,10 @@ class League extends CI_Controller {
         $this->stencil->js('league_funcs');
         $user_id = $this->session->userdata('id'); 
         $league_id = $params['league_id']; 
-        $entered_password = $params['league_pw'];  
+        $entered_password = null 
+        if (array_key_exists('league_pw', $params)) { 
+            $entered_password = $params['league_pw'];  
+        }
         if ($user_id) {  
            if ($this->league_model->is_league_member($league_id, $user_id)) { 
  	        $this->stencil->title('Already Joined the League');
