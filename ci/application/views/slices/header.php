@@ -41,4 +41,4 @@
        </ul>
     </div> 
   </div> 
-</div>
+</nav>
