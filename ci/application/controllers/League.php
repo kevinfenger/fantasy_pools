@@ -19,7 +19,7 @@ class League extends CI_Controller {
         }
         $league_id = $params['league_id'];
  
-        $this->stencil->slice(array(call_user_func('league_nav_content', $league_id) => 'header_league_nav'));
+        $this->stencil->slice('header_league_nav', array('league_details' => $this->league_model->get_league_details($league_id)));
 	$this->stencil->layout('league_layout');
 	$this->stencil->css('font-awesome');
 
