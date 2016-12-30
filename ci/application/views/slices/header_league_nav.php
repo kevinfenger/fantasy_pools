@@ -7,11 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--ul class="nav navbar-nav"> 
-        <li>
-          <a href="<?php echo base_url('league?league_id='.$league_details['league_id']); ?>">Overview</a>
-        </li>
-      </ul-->
+      <a class="navbar-brand" href="<?php echo base_url('league?league_id='.$league_details['league_id']);?>">League Overview</a>
     </div>
     <div class="collapse navbar-collapse" id="dropdownMenu2"> 
        <ul class="nav navbar-nav"> 
@@ -28,17 +24,6 @@
   </div> 
 </nav>
 
-<!--div class="navbar navbar-static-top navbar-inverse">
-  <?php print_r($league_details); print_r($teams)?>
-  <div class="navbar-inner">
-  <div class ="container"> 
-    <ul class="nav">
-      <li><a data-toggle="modal" data-target="#league_scoring_modal" style="cursor:pointer">Scoring</a></li>
-      <li><a data-toggle="modal" data-target="#league_payout_modal" style="cursor:pointer">Payouts</a></li>
-    </ul>
-  </div> 
-  </div>
-</div-->
 <div class="modal fade" id="league_scoring_modal" tabindex="-1" role="dialog" aria-labelledby="league_scoring_modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
