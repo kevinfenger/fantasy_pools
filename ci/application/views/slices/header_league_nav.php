@@ -119,7 +119,7 @@
 	    <tbody>
             <?php $count = 0; 
                   $sploded = explode(',', $league_details['payouts']); 
-                  foreach ($s in $sploded): 
+                  foreach ($sploded as $s): 
                       $count += 1; 
             ?>
               <tr><td><?php echo $count; ?></td><td>$<?php echo $s; ?></td></tr>
