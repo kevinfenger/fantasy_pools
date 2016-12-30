@@ -99,7 +99,7 @@
       </div>
     </div>
   </div>
-</div-->
+</div>
 <div class="modal fade" id="league_payout_modal" tabindex="-1" role="dialog" aria-labelledby="league_payout_modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -117,12 +117,16 @@
               </tr>
             </thead>
 	    <tbody>
-              <tr><td>1st</td><td>$130</td></tr>
-              <tr><td>2nd</td><td>$20</td></tr>
-              <tr><td>3rd</td><td>$10</td></tr>
+            <?php $count = 0; 
+                  $sploded = explode(',', $league_details['payouts']); 
+                  foreach ($s in $sploded): 
+                      $count += 1; 
+            ?>
+              <tr><td><?php echo $count; ?></td><td>$<?php echo $s; ?></td></tr>
+            <?php endforeach; ?>
             </tbody> 
           </table>
       </div>
     </div>
   </div>
-</div-->
+</div>
