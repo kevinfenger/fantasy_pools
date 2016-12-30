@@ -166,7 +166,8 @@ class League extends CI_Controller {
         $this->stencil->css('font-awesome');
         $this->stencil->js('league_funcs');
         $user_id = $this->session->userdata('id'); 
-        $league_id = $params['league_id'];  
+        $league_id = $params['league_id']; 
+        $entered_password = $params['league_pw'];  
         if ($user_id) {  
            if ($this->league_model->is_league_member($league_id, $user_id)) { 
  	        $this->stencil->title('Already Joined the League');
@@ -175,6 +176,14 @@ class League extends CI_Controller {
            }
            $this->stencil->title('Register Team');
            $league_info = $this->league_model->get_league_details($league_id);
+           $league_password = $league_info['league_password']
+           if (strlen($league_password) > 0) { 
+               if ($league_password != $entered_password) { 
+ 	           $this->stencil->title('Invalid Password');
+                   $this->stencil->paint('issues_view', array('heading' => 'Invalid Password', 'content' => 'Invalid Password, <a href="/league/join">try again</a>'));
+                   return; 
+               } 
+           } 
            $data['league_name'] = $league_info['name']; 
            $data['league_id'] = $league_info['league_id'];  
    	   $this->stencil->paint('register_team_view', $data);

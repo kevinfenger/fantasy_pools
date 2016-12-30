@@ -7,16 +7,24 @@
   <div class="row">
     <div class="col-lg-12">
       <form action='javascript:void(0);'>
-        <div class="form-group"> 
-          <input id="league_id" type="text" placeholder="League ID" tabindex="1" class="form-control">
+        <div class="form-group">
+          <div class="row">  
+            <div class="col-sm-6"> 
+              <input id="league_id" type="text" placeholder="League ID" tabindex="1" class="form-control">
+            </div>
+          </div>
         </div> 
         <div class="form-group"> 
-          <input id="league_password" type="password" placeholder="Password" tabindex="2" class="form-control">
+          <div class="row">  
+            <div class="col-sm-6"> 
+              <input id="league_password" type="password" placeholder="Password" tabindex="2" class="form-control">
+            </div>
+          </div>
         </div>
         <div class="form-group"> 
           <div class="row">
-            <div class="col-sm-6 col-sm-offset-3"> 
-              <button id="join_league_by_id" class="btn btn-block btn-success">Join League</button>
+            <div class="col-sm-6"> 
+              <button id="join_league_by_id_button" class="btn btn-block btn-primary">Join League</button>
             </div> 
           </div>
         </div>
