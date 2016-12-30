@@ -38,8 +38,10 @@
         </div>
         <div class="form-group" id="league_password_control_group" style="display:none">
           <div class="row">  
-            <input type="text" id="league_password" placeholder="League Password" class="form-control">
-            <span id="league_password_verify_txt" class="verify"></span>
+            <div class="col-sm-6"> 
+              <input type="text" id="league_password" placeholder="League Password" class="form-control">
+              <span id="league_password_verify_txt" class="verify"></span>
+            </div>
           </div>
         </div>
     </div>
