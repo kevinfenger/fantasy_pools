@@ -8,13 +8,17 @@
     <div class="col-lg-12">
       <form action='javascript:void(0);'>
         <div class="form-group"> 
-          <input id="league_id" type="text" placeholder="League ID" tabindex="1">
+          <input id="league_id" type="text" placeholder="League ID" tabindex="1" class="form-control">
         </div> 
         <div class="form-group"> 
-          <input id="league_password" type="password" placeholder="Password" tabindex="2">
+          <input id="league_password" type="password" placeholder="Password" tabindex="2" class="form-control">
         </div>
         <div class="form-group"> 
-          <button id="join_league_by_id" class="btn btn-block btn-success">Join League</button>
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3"> 
+              <button id="join_league_by_id" class="btn btn-block btn-success">Join League</button>
+            </div> 
+          </div>
         </div>
       </form>
     </div>
@@ -23,7 +27,7 @@
 <hr>
 <div class="row">
   <div class="col-lg-12">
-      <h1 class="page-header">Join Exsiting Public League</h1>
+      <h1 class="page-header">Public Leagues</h1>
   </div>
 </div>
 <div class="row"> 
