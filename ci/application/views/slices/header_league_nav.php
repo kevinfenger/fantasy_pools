@@ -1,5 +1,5 @@
 <div class="navbar navbar-static-top navbar-inverse">
-  <?php echo $league_details; print_r($league_details);?>
+  <?php print_r($league_details); print_r($teams)?>
   <div class="navbar-inner">
   <div class ="container"> 
     <ul class="nav">
