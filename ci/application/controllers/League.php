@@ -168,7 +168,7 @@ class League extends CI_Controller {
         $this->stencil->js('league_funcs');
         $user_id = $this->session->userdata('id'); 
         $league_id = $params['league_id']; 
-        $entered_password = null 
+        $entered_password = null; 
         if (array_key_exists('league_pw', $params)) { 
             $entered_password = $params['league_pw'];  
         }
