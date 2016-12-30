@@ -42,6 +42,10 @@ class League_model extends CI_Model {
  
         return $league_id;  
     }
+    public function update_league($input) 
+    { 
+        return $league_id; 
+    } 
     public function get_public_leagues() 
     { 
        $this->db->select('l.name, l.league_id, l.number_of_members, l.max_members, l.image, l.commissioner_id, l.created, u.first_name, u.last_name');
@@ -159,13 +163,6 @@ class League_model extends CI_Model {
  
         return $team_id;  
     }
-    /*public function is_user_already_in_league($league_id, $user_id) 
-    { 
-       $this->db->select('team_id');
-       $query = $this->db->get_where('teams', array('owner_id' => $user_id, 'league_id' => $league_id));
-       
-       return $query->num_rows() > 0; 
-    } */ 
     public function is_league_public($league_id=null) 
     {
        $this->db->select('visibility');

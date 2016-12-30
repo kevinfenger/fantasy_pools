@@ -77,27 +77,6 @@ class League extends CI_Controller {
             }  
         }   
     }
-    public function view_settings() { 
-        $params = $this->input->get(); 
-        $league_id = $params['league_id']; 
-        $user_id = $this->session->userdata('id') ? $this->session->userdata('id') : 0;
-        if (!($this->league_model->does_league_exist($league_id))) { 
- 	    $this->stencil->title('League Viewing Issues');
-   	    $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'The league you are trying to view does not exist.'));
-            return; 
-        }
-        $is_league_member = $this->league_model->is_league_member($league_id, $user_id);
-        if (!$is_league_member) { 
- 	    $this->stencil->title('League Viewing Issues');
-   	    $this->stencil->paint('issues_view', array('heading' => 'Not a member!', 'content' => 'Only members can view league settings.'));
-            return; 
-        } 
-	$this->stencil->slice('head');
-	$this->stencil->slice('header');
-        $this->stencil->slice('header_league_nav');
-	$this->stencil->layout('league_layout');
-	$this->stencil->css('font-awesome');
-    } 
     public function edit_settings() { 
         $params = $this->input->get(); 
         $league_id = $params['league_id']; 
@@ -107,8 +86,8 @@ class League extends CI_Controller {
    	    $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'The league you are trying to view does not exist.'));
             return; 
         }
-        $is_comish = $this->league_model->is_league_comish($league_id, $user_id);
-        if (!$is_league_member) { 
+        $is_commish = $this->league_model->is_league_comish($league_id, $user_id);
+        if (!$is_commish) { 
  	    $this->stencil->title('League Viewing Issues');
    	    $this->stencil->paint('issues_view', array('heading' => 'Invalid Privileges!', 'content' => 'Only commissioners can edit league settings.'));
             return; 
@@ -118,6 +97,10 @@ class League extends CI_Controller {
         $this->stencil->slice('header_league_nav');
 	$this->stencil->layout('league_layout');
 	$this->stencil->css('font-awesome');
+        $league_details = $this->league_model->get_league_details($league_id); 
+	$data['league_details'] = $league_details; 
+	$data['teams'] = $this->league_model->get_teams_in_league($league_id);
+        $this->stencil->paint('edit_league_settings_view', $data);
     } 
     public function add_team_to_league() 
     { 
