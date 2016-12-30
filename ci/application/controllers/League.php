@@ -19,7 +19,6 @@ class League extends CI_Controller {
         }
         $league_id = $params['league_id'];
  
-        $this->stencil->slice('header_league_nav', array('league_details' => $this->league_model->get_league_details($league_id)));
 	$this->stencil->layout('league_layout');
 	$this->stencil->css('font-awesome');
 
@@ -33,7 +32,8 @@ class League extends CI_Controller {
         if (!$user_id) { 
             if (!$is_public_league) {
  	        $this->stencil->title('League Viewing Issues');
-   	        $this->stencil->paint('issues_view', array('heading' => 'League Is Private', 'content' => 'The league you are trying to view is private. 
+   	        $this->stencil->paint(
+                  'issues_view', array('heading' => 'League Is Private', 'content' => 'The league you are trying to view is private. 
                                                                                                                           You are not currently logged in. If you are a 
                                                                                                                           member of this league -- please log in to view the page. '));
                 return; 
@@ -63,8 +63,10 @@ class League extends CI_Controller {
             } 
             if ($is_league_member) { 
                 // Load up the page, and load up team info
+                $this->stencil->slice('header_league_nav');
                 $league_details = $this->league_model->get_league_details($league_id); 
                 $this->stencil->js('league_funcs');
+                $data['league_details'] = $league_details; 
                 $data['name'] = $league_details['name']; 
                 $data['teams'] = $this->league_model->get_teams_in_league($league_id);
                 $this->stencil->data('my_team', $this->league_model->get_team($user_id, $league_id)); 
