@@ -14,6 +14,7 @@
   <div class="row">
     <div class="col-lg-12">
       <form action='javascript:void(0);'>
+        <input id="league_id" value=<?php echo $league_id;?> type=hidden> 
         <div class="form-group">
           <div class="row">  
             <div class="col-sm-6"> 
