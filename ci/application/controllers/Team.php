@@ -37,12 +37,12 @@ class Team extends CI_Controller {
         if ($is_public_league) {
             if ($is_team_owner) {
                 $this->stencil->js('league_funcs');
-                $this->_paint_team($user_id, $team_details, $league_details, 'team_owner_view')
+                $this->_paint_team($user_id, $team_details, $league_details, 'team_owner_view');
             } 
             else {
                 if (strtotime(PLAYERS_VIEWABLE_DATETIME) < time(null)) {  
                     $team_user_id = $this->team_model->get_team_user_id($team_details->team_id); 
-                    $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view')
+                    $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view');
                 }
                 else { 
  	            $this->stencil->title('Team Viewing Issues');
@@ -57,12 +57,12 @@ class Team extends CI_Controller {
            if ($is_league_member) { 
                if ($is_team_owner) { 
                    $this->stencil->js('league_funcs');
-                   $this->_paint_team($user_id, $team_details, $league_details, 'team_owner_view')
+                   $this->_paint_team($user_id, $team_details, $league_details, 'team_owner_view');
                }
                else { 
                    if (strtotime(PLAYERS_VIEWABLE_DATETIME) < time(null)) {  
                         $team_user_id = $this->team_model->get_team_user_id($team_details->team_id); 
-                        $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view')
+                        $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view');
                    }
                }
                else { 
