@@ -11,7 +11,7 @@
 
 	<header>
 		<?php echo $header; ?>
-		<?php if isset($header_league_nav) { echo $header_league_nav; } ?>
+		<?php if (isset($header_league_nav)) { echo $header_league_nav; } ?>
 	</header>
 
 	<div class="container">
