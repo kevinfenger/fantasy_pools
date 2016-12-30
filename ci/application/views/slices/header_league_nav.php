@@ -7,15 +7,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button> 
+      <a href="<?php echo base_url('league?league_id='.$league_details['league_id']); ?>">Overview</a>
     </div>
     <div class="collapse navbar-collapse" id="dropdownMenu2"> 
        <ul class="nav navbar-nav"> 
          <?php
              if ($this->session->userdata['id'] == $league_details['commissioner_id']): 
          ?>
-                 <li><a href="#">Edit League Settings</a></li>
+                 <li><a href="<?php echo base_url('league/edit_settings?league_id='.$league_details['league_id']) ?>">Edit League Settings</a></li>
          <?php endif;?>
-         <li><a href="#">View League Settings</a></li>
+         <li><a href="<?php echo base_url('league/edit_settings?league_id='.$league_details['league_id']) ?>">View League Settings</a></li>
          <li><a href="#">Scoring</a></li>
          <li><a href="#">Payouts</a></li>
        </ul> 
