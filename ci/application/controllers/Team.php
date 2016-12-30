@@ -64,13 +64,13 @@ class Team extends CI_Controller {
                         $team_user_id = $this->team_model->get_team_user_id($team_details->team_id); 
                         $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view');
                    }
-               }
-               else { 
- 	           $this->stencil->title('Team Viewing Issues');
-   	           $this->stencil->paint('issues_view', array(
-                     'heading' => 'Team Is Not Yet Viewable', 
-                     'content' => "Teams in this league will not be viewable until : " . PLAYERS_VIEWABLE_DATETIME)); 
-                   return; 
+                   else { 
+ 	               $this->stencil->title('Team Viewing Issues');
+   	               $this->stencil->paint('issues_view', array(
+                         'heading' => 'Team Is Not Yet Viewable', 
+                         'content' => "Teams in this league will not be viewable until : " . PLAYERS_VIEWABLE_DATETIME)); 
+                       return;
+                   } 
                }
            }
            else { 
