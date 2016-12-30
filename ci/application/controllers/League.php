@@ -11,17 +11,18 @@ class League extends CI_Controller {
     { 
 	$this->stencil->slice('head');
 	$this->stencil->slice('header');
-        $this->stencil->slice('header_league_nav');
-	$this->stencil->layout('league_layout');
-	$this->stencil->css('font-awesome');
         $params = $this->input->get(); 
         if (!($params) || !array_key_exists('league_id', $params)) { 
  	    $this->stencil->title('League Viewing Issues');
    	    $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'The league you are trying to view does not exist.'));
             return; 
         }
+        $league_id = $params['league_id'];
+ 
+        $this->stencil->slice(array(call_user_func('league_nav_content', $league_id) => 'header_league_nav'));
+	$this->stencil->layout('league_layout');
+	$this->stencil->css('font-awesome');
 
-        $league_id = $params['league_id']; 
         if (!($this->league_model->does_league_exist($league_id))) { 
  	    $this->stencil->title('League Viewing Issues');
    	    $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'The league you are trying to view does not exist.'));
@@ -220,12 +221,11 @@ class League extends CI_Controller {
    	        $this->stencil->paint('issues_view', array('heading' => 'Already Joined the League', 'content' => 'You currently can not register two teams under the same owner for a league.'));
                 return; 
            }
-           $this->stencil->title('Register Team');
            $league_info = $this->league_model->get_league_details($league_id);
            if ($league_info == null) { 
- 	        $this->stencil->title('League Does Not Exist');
-                $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'Could not find league, <a href="/league/join">try again</a>'));
-                return; 
+ 	       $this->stencil->title('League Does Not Exist');
+               $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'Could not find league, <a href="/league/join">try again</a>'));
+               return; 
            } 
            $league_password = $league_info['league_password'];
            if ($league_password && strlen($league_password) > 0) { 
@@ -234,9 +234,19 @@ class League extends CI_Controller {
                    $this->stencil->paint('issues_view', array('heading' => 'Invalid Password', 'content' => 'Invalid Password, <a href="/league/join">try again</a>'));
                    return; 
                } 
-           } 
+           }
+           if ($league_info['number_of_members'] >= $league_info['max_members']) { 
+ 	       $this->stencil->title('League is full');
+               $this->stencil->paint(
+                 'issues_view', 
+                 array('heading' => 'League Is Full', 
+                       'content' => 'Try a different league, <a href="/league/join">here</a>. Or ask your commissioner to raise the limit.')
+               );
+               return; 
+           }  
            $data['league_name'] = $league_info['name']; 
            $data['league_id'] = $league_info['league_id'];  
+           $this->stencil->title('Register Team');
    	   $this->stencil->paint('register_team_view', $data);
         } 
         else {  

@@ -36,6 +36,18 @@
             </div>
           </div>
         </div>
+        <div class="row"> 
+          <div class="col-sm-4">
+            <h5>Max Members</h5>
+          </div>
+        </div>  
+        <div class="form-group" id="league_password_control_group" style="display:none">
+          <div class="row">  
+            <div class="col-sm-6">
+              <input type="number" id="league_max_members" min="1" max="100" value="20" class="form-control"> 
+            </div>
+          </div>
+        </div>
         <div class="form-group" id="league_password_control_group" style="display:none">
           <div class="row">  
             <div class="col-sm-6"> 

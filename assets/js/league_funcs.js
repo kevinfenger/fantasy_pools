@@ -87,7 +87,12 @@ $(function() {
           $.ajax({
                type: "POST"
              , url: "/league/create_league"
-             , data: ({ team_name: $("#team_name").val(), league_name: $("#league_name").val(), private_league: is_private, league_password: $("#league_password").val() })
+             , data: ({ team_name: $("#team_name").val(), 
+                        league_name: $("#league_name").val(), 
+                        private_league: is_private, 
+                        league_password: $("#league_password").val(), 
+                        max_members: $("#league_max_members").val()
+                     })
              , dataType: "json" 
              , success: function(msg) 
                         {

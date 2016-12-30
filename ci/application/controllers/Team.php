@@ -32,32 +32,23 @@ class Team extends CI_Controller {
         $is_league_member = $this->league_model->is_league_member($league_id, $user_id); 
         $is_team_owner = $this->team_model->is_team_owner($user_id, $team_id);
         $team_details = $this->team_model->get_team_details($team_id); 
-        $league_details = $this->league_model->get_league_details($league_id);  
+        $league_details = $this->league_model->get_league_details($league_id); 
+        // TODO this code is shit, it needs a cleanup  
         if ($is_public_league) {
             if ($is_team_owner) {
                 $this->stencil->js('league_funcs');
-                $data['league_name'] = $league_details['name']; 
-                $data['league_id'] = $league_details['league_id']; 
-                $data['team_details'] = $team_details; 
-                $data['team_id'] = $team_details->team_id; 
-                $data['team_name'] = $team_details->team_name; 
-                $data['team_players'] = $this->league_model->get_team($user_id, $league_id); 
-                $this->stencil->paint('team_owner_view',$data);
+                $this->_paint_team($user_id, $team_details, $league_details, 'team_owner_view')
             } 
             else {
                 if (strtotime(PLAYERS_VIEWABLE_DATETIME) < time(null)) {  
-                    $team_user_id = $this->team_model->get_team_user_id($team_id); 
-                    $data['league_name'] = $league_details['name']; 
-                    $data['league_id'] = $league_details['league_id']; 
-                    $data['team_details'] = $team_details; 
-                    $data['team_id'] = $team_details->team_id; 
-                    $data['team_name'] = $team_details->team_name; 
-                    $data['team_players'] = $this->league_model->get_team($team_user_id, $league_id); 
-                    $this->stencil->paint('team_nonowner_view', $data);
+                    $team_user_id = $this->team_model->get_team_user_id($team_details->team_id); 
+                    $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view')
                 }
                 else { 
  	            $this->stencil->title('Team Viewing Issues');
-   	            $this->stencil->paint('issues_view', array('heading' => 'Team Is Not Yet Viewable', 'content' => "Teams in this league will not be viewable until : " . PLAYERS_VIEWABLE_DATETIME)); 
+   	            $this->stencil->paint('issues_view', array(
+                      'heading' => 'Team Is Not Yet Viewable', 
+                      'content' => "Teams in this league will not be viewable until : " . PLAYERS_VIEWABLE_DATETIME)); 
                     return; 
                 }
             }  
@@ -65,19 +56,31 @@ class Team extends CI_Controller {
         else {
            if ($is_league_member) { 
                if ($is_team_owner) { 
-               
+                   $this->stencil->js('league_funcs');
+                   $this->_paint_team($user_id, $team_details, $league_details, 'team_owner_view')
                }
                else { 
-
-               }  
-           } 
+                   if (strtotime(PLAYERS_VIEWABLE_DATETIME) < time(null)) {  
+                        $team_user_id = $this->team_model->get_team_user_id($team_details->team_id); 
+                        $this->_paint_team($team_user_id, $team_details, $league_details, 'team_nonowner_view')
+                   }
+               }
+               else { 
+ 	           $this->stencil->title('Team Viewing Issues');
+   	           $this->stencil->paint('issues_view', array(
+                     'heading' => 'Team Is Not Yet Viewable', 
+                     'content' => "Teams in this league will not be viewable until : " . PLAYERS_VIEWABLE_DATETIME)); 
+                   return; 
+               }
+           }
            else { 
  	        $this->stencil->title('Team Viewing Issues');
-   	        $this->stencil->paint('issues_view', array('heading' => 'Team Is Private', 'content' => 'The team you are trying to view is in a league that is private. 
-                                                                                                                          You are not currently logged in. If you are a 
-                                                                                                                          member of this league -- please log in to view the page. '));
+   	        $this->stencil->paint('issues_view', array(
+                  'heading' => 'Team Is Private', 
+                  'content' => 'The team you are trying to view is in a league that is private. 
+                                You are not currently logged in. If you are a 
+                                member of this league -- please log in to view the page. '));
                 return; 
-
            } 
         }   
     } 
@@ -100,9 +103,16 @@ class Team extends CI_Controller {
     { 
        $params = $this->input->post(); 
        echo $this->team_model->save_team($params); 
-        
+    }
+    private function _paint_team($user_id, $team_details, $league_details, $view) { 
+        $this->stencil->js('league_funcs');
+        $data['league_name'] = $league_details['name']; 
+        $data['league_id'] = $league_details['league_id']; 
+        $data['team_details'] = $team_details; 
+        $data['team_id'] = $team_details->team_id; 
+        $data['team_name'] = $team_details->team_name; 
+        $data['team_players'] = $this->league_model->get_team($user_id, $league_details['league_id']); 
+        $this->stencil->paint($view,$data);
     } 
+     
 }
-
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */

@@ -9,19 +9,21 @@ class League_model extends CI_Model {
     {
         $is_private = (boolean)$input['private_league']; 
         if ($is_private) { 
-            $sql = 'INSERT INTO leagues (name, league_password, visibility, commissioner_id, players_table, created) VALUES(?,?,?,?,?,NOW())'; 
+            $sql = 'INSERT INTO leagues (name, league_password, visibility, commissioner_id, players_table, max_members, created) VALUES(?,?,?,?,?,?,NOW())'; 
             $this->db->query($sql, array($input['league_name'], 
                                          $input['league_password'], 
                                          LEAGUE_PRIVATE_VISIBILITY, 
                                          $this->session->userdata('id'), 
-                                         'players')); 
+                                         'players', //TODO make this customizable 
+                                         $input['max_members'])); 
         }
         else { 
-            $sql = 'INSERT INTO leagues (name, visibility, commissioner_id, players_table, created) VALUES(?,?,?,?,NOW())'; 
+            $sql = 'INSERT INTO leagues (name, visibility, commissioner_id, players_table, max_members, created) VALUES(?,?,?,?,?,NOW())'; 
             $this->db->query($sql, array($input['league_name'], 
                                          LEAGUE_PUBLIC_VISIBILITY, 
                                          $this->session->userdata('id'), 
-                                         'players')); 
+                                         'players', 
+                                         $input['max_mebers'])); 
 
         }
         $league_id = $this->db->insert_id();
