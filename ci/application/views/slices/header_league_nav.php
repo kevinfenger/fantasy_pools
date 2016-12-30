@@ -6,8 +6,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button> 
-      <a href="<?php echo base_url('league?league_id='.$league_details['league_id']); ?>">Overview</a>
+      </button>
+      <ul class="nav navbar-nav"> 
+        <li>
+          <a href="<?php echo base_url('league?league_id='.$league_details['league_id']); ?>">Overview</a>
+        </li>
+      </ul>
     </div>
     <div class="collapse navbar-collapse" id="dropdownMenu2"> 
        <ul class="nav navbar-nav"> 
@@ -18,7 +22,7 @@
          <?php endif;?>
          <li><a href="<?php echo base_url('league/view_settings?league_id='.$league_details['league_id']) ?>">View League Settings</a></li>
          <li><a href="#" data-toggle="modal" data-target="#league_payout_modal">Payouts</a></li>
-         <li><a href="#">Payouts</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#league_scoring_modal">Scoring</a></li>
        </ul> 
     </div> 
   </div> 
@@ -34,7 +38,7 @@
     </ul>
   </div> 
   </div>
-</div>
+</div-->
 <div class="modal fade" id="league_scoring_modal" tabindex="-1" role="dialog" aria-labelledby="league_scoring_modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
