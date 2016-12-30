@@ -9,17 +9,19 @@ class League_model extends CI_Model {
     {
         $is_private = (boolean)$input['private_league']; 
         if ($is_private) { 
-            $sql = 'INSERT INTO leagues (name, league_password, visibility, commissioner_id, created) VALUES(?,?,?,?,NOW())'; 
+            $sql = 'INSERT INTO leagues (name, league_password, visibility, commissioner_id, players_table, created) VALUES(?,?,?,?,?,NOW())'; 
             $this->db->query($sql, array($input['league_name'], 
                                          $input['league_password'], 
                                          LEAGUE_PRIVATE_VISIBILITY, 
-                                         $this->session->userdata('id'))); 
+                                         $this->session->userdata('id'), 
+                                         'players')); 
         }
         else { 
-            $sql = 'INSERT INTO leagues (name, visibility, commissioner_id, created) VALUES(?,?,?,NOW())'; 
+            $sql = 'INSERT INTO leagues (name, visibility, commissioner_id, players_table, created) VALUES(?,?,?,?,NOW())'; 
             $this->db->query($sql, array($input['league_name'], 
                                          LEAGUE_PUBLIC_VISIBILITY, 
-                                         $this->session->userdata('id'))); 
+                                         $this->session->userdata('id'), 
+                                         'players')); 
 
         }
         $league_id = $this->db->insert_id();
@@ -186,5 +188,16 @@ class League_model extends CI_Model {
        $query = $this->db->get_where('teams', array('owner_id' => $user_id, 'league_id' => $league_id));
        
        return $query->num_rows() > 0; 
+    }    
+    public function is_league_comish($league_id, $user_id) 
+    { 
+       $this->db->select('comissioner_id');
+       $query = $this->db->get_where('leagues', array('league_id' => $league_id));
+       
+       if ($query->num_rows() == 0) 
+           return false;
+  
+       $row = $query->row();
+       return $row->comissioner_id == $user_id;  
     }    
 }
