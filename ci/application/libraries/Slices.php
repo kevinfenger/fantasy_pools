@@ -65,7 +65,7 @@ class Slices {
             $this->CI->load->model('league_model');
             $data['kfed'] = 'blam';
             $data['league_id'] = $league_id; 
-            return null;  
+            return $data;  
         } 
 }
 /* End of file Slices.php */
