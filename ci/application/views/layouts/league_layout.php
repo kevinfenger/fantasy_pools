@@ -11,7 +11,7 @@
 
 	<header>
 		<?php echo $header; ?>
-		<?php echo $header_league_nav; ?>
+		<?php echo $league_nav_content; ?>
 	</header>
 
 	<div class="container">
