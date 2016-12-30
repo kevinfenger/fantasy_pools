@@ -176,7 +176,7 @@ class League extends CI_Controller {
            }
            $this->stencil->title('Register Team');
            $league_info = $this->league_model->get_league_details($league_id);
-           $league_password = $league_info['league_password']
+           $league_password = $league_info['league_password'];
            if (strlen($league_password) > 0) { 
                if ($league_password != $entered_password) { 
  	           $this->stencil->title('Invalid Password');
