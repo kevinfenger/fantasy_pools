@@ -16,8 +16,8 @@
          ?>
                  <li><a href="<?php echo base_url('league/edit_settings?league_id='.$league_details['league_id']) ?>">Edit League Settings</a></li>
          <?php endif;?>
-         <li><a href="<?php echo base_url('league/edit_settings?league_id='.$league_details['league_id']) ?>">View League Settings</a></li>
-         <li><a href="#">Scoring</a></li>
+         <li><a href="<?php echo base_url('league/view_settings?league_id='.$league_details['league_id']) ?>">View League Settings</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#league_payout_modal">Payouts</a></li>
          <li><a href="#">Payouts</a></li>
        </ul> 
     </div> 
@@ -95,7 +95,7 @@
       </div>
     </div>
   </div>
-</div>
+</div-->
 <div class="modal fade" id="league_payout_modal" tabindex="-1" role="dialog" aria-labelledby="league_payout_modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
