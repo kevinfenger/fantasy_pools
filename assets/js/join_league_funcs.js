@@ -1,7 +1,7 @@
 $(function() {
    $("#join_league_by_id_button").click(function(){
-       var pw_value = #("#league_password").val(); 
-       var id_value = #("#league_id").val();
+       var pw_value = $("#league_password").val(); 
+       var id_value = $("#league_id").val();
        pathArray = window.location.href.split('/');
        host = pathArray[2];
        url = 'https://' + host;
