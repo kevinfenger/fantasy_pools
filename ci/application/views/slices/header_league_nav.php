@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <ul class="nav navbar-nav"> 
+      <!--ul class="nav navbar-nav"> 
         <li>
           <a href="<?php echo base_url('league?league_id='.$league_details['league_id']); ?>">Overview</a>
         </li>
-      </ul>
+      </ul-->
     </div>
     <div class="collapse navbar-collapse" id="dropdownMenu2"> 
        <ul class="nav navbar-nav"> 
