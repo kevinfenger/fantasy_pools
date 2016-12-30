@@ -50,8 +50,7 @@ class League_model extends CI_Model {
     { 
        $this->db->select('l.name, l.league_id, l.number_of_members, l.max_members, l.image, l.commissioner_id, l.created');
        $query = $this->db->get_where('leagues l', array('l.league_id' => $league_id));
-
-       return $query->row_array(); 
+       return $query->num_rows() > 0 ? $query->row_array() : null; 
     } 
     public function get_teams_in_league($league_id) 
     {

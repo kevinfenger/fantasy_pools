@@ -180,6 +180,11 @@ class League extends CI_Controller {
            }
            $this->stencil->title('Register Team');
            $league_info = $this->league_model->get_league_details($league_id);
+           if ($league_info == null) { 
+ 	        $this->stencil->title('League Does Not Exist');
+                $this->stencil->paint('issues_view', array('heading' => 'League Does Not Exist', 'content' => 'Invalid Password, <a href="/league/join">try again</a>'));
+                return; 
+           } 
            $league_password = $league_info['league_password'];
            if (strlen($league_password) > 0) { 
                if ($league_password != $entered_password) { 
