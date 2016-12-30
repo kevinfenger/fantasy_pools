@@ -19,15 +19,14 @@
             </div>
           </div>
         </div>
-        <div class="form-group" id="league_password_control_group" placeholder="League Password" style="display:none">
-          <div class="row">  
-            <input type="text" id="league_password">
-            <span id="league_password_verify_txt" class="verify"></span>
+        <div class="row"> 
+          <div class="col-sm-4">
+            <h5>League Visibility</h5>
           </div>
-        </div>
+        </div>  
         <div class="form-group"> 
           <div class="row">  
-            <div class="col-sm-6"> 
+            <div class="col-sm-1 col-sm-offset-1"> 
               <label class="radio">
                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>Public
               </label> 
@@ -35,6 +34,12 @@
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">Private
               </label>
             </div>
+          </div>
+        </div>
+        <div class="form-group" id="league_password_control_group" style="display:none">
+          <div class="row">  
+            <input type="text" id="league_password" placeholder="League Password" class="form-control">
+            <span id="league_password_verify_txt" class="verify"></span>
           </div>
         </div>
     </div>
@@ -49,7 +54,7 @@
       <div class="form-group"> 
         <div class="row">  
           <div class="col-sm-6"> 
-            <input type="text" id="team_name" placeholder="Team Name">
+            <input type="text" id="team_name" placeholder="Team Name" class="form-control">
             <span id="team_name_verify_txt" class="verify"></span>
           </div>
         </div>
