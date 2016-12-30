@@ -60,12 +60,12 @@ class Slices {
             $data['user_teams'] = $this->CI->team_model->get_teams_by_user();  
             return $data; 
         }
-        public function league_nav_content($league_id) 
+        public function header_league_nav() 
         { 
             $this->CI->load->model('league_model');
-            $data['kfed'] = 'blam';
-            $data['league_id'] = $league_id; 
-            return $data;  
+            //$data['kfed'] = 'blam';
+            //$data['league_id'] = $league_id; 
+            return array('league_details' => array('one', 'two', 'three'));  
         } 
 }
 /* End of file Slices.php */
