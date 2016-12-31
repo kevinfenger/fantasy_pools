@@ -3,6 +3,7 @@
       <h1 class="page-header">Edit League</h1>
   </div>
 </div>
+<input id="league_id" value=<?php echo $league_details['league_id'];?> type=hidden>
 <div class="panel-body">
   <div class="row">
     <div class="col-lg-12">

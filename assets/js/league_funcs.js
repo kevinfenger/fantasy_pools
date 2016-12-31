@@ -106,12 +106,47 @@ $(function() {
         }
    });
    $("#update_league_button").click(function(){
-       var po_fields = $('[name=po_fields]'); 
-       console.log('blam'); 
-       console.log(po_fields); 
-       setTimeout(function(){
-           $('#update_status').css('display','none');
-       }, 5000);
+       if (is_private && $(".valid").length < 2) { 
+           $.fn.league_name_check();
+           $.fn.league_password_check();
+       }
+       else if ($(".valid").length < 1) {
+           $.fn.league_name_check();
+       }
+       else { 
+           var po_fields = $('[name=po_fields]'); 
+           var val_array = []; 
+           for (var i = 0; i < po_fields.length; i++) {
+               val_array.unshift(po_fields[i].value); 
+           } 
+           payout_string = val_array.join(',');
+           console.log(payout_string);  
+           $.ajax({
+               type: "POST"
+             , url: "/league/update_league"
+             , data: ({  
+                        league_name: $("#league_name").val(),
+                        league_id: $('#league_id').val(),  
+                        visibility: is_private ? 0 : 1, 
+                        league_password: is_private ? $("#league_password").val() : "", 
+                        max_members: $("#league_max_members").val(), 
+                        payouts: payout_string
+                     })
+             , dataType: "json" 
+             , success: function(msg) {
+                   $("#update_status").html('Successfully Updated League'); 
+                   setTimeout(function(){
+                       $('#update_status').css('display','none');
+                   }, 5000);
+               }
+             , error: function(jqXHR, exception) {
+                   $("#update_status").html('Something went wrong, try again shortly.'); 
+                   setTimeout(function(){
+                       $('#update_status').css('display','none');
+                   }, 5000);
+               }
+            });
+       } 
    }); 
    $("#league_password").keyup(function(){ $.fn.league_password_check(); });
    $("#league_name").keyup(function(){ $.fn.league_name_check(); });

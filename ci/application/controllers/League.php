@@ -152,6 +152,19 @@ class League extends CI_Controller {
        $rv = array('league_id' => $league_id); 
        echo json_encode($rv); 
     } 
+    public function update_league() 
+    {
+       $params = $this->input->post(); 
+       $success = $this->league_model->update_league($params); 
+       if ($success) { 
+           echo 'success'; 
+       } 
+       else { 
+           # TODO function this  
+           header('HTTP/1.1 500 Internal Server Something went wrong'); 
+           die(json_encode(array('message' => 'ERROR', 'code' => 500)));
+       }
+    } 
     public function join() 
     { 
 	$this->stencil->slice('head');

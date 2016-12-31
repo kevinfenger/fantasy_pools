@@ -43,8 +43,25 @@ class League_model extends CI_Model {
         return $league_id;  
     }
     public function update_league($input) 
-    { 
-        return $league_id; 
+    {
+        $sql = 'UPDATE leagues 
+                SET league_name = ?, 
+                    league_password = ?, 
+                    visibility = ?, 
+                    max_members = ?, 
+                    payouts = ?
+                WHERE league_id = ?' 
+        $this->db->query(
+          $sql, 
+          array(
+            $input['league_name'], 
+            $input['league_password'], 
+            $input['visibility'], 
+            $input['max_members'], 
+            $input['payouts']), 
+            $input['league_id']); 
+
+        return $this->db->affected_rows() > 0 ? true : false;
     } 
     public function get_public_leagues() 
     { 
