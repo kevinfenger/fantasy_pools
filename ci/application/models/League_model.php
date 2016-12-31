@@ -50,7 +50,8 @@ class League_model extends CI_Model {
                     visibility = ?, 
                     max_members = ?, 
                     payouts = ?
-                WHERE league_id = ?'; 
+                WHERE league_id = ?';
+        print_r($sql);  
         $this->db->query(
           $sql, 
           array(
@@ -58,8 +59,8 @@ class League_model extends CI_Model {
             $input['league_password'], 
             $input['visibility'], 
             $input['max_members'], 
-            $input['payouts']), 
-            $input['league_id']); 
+            $input['payouts'], 
+            $input['league_id'])); 
 
         return $this->db->affected_rows() > 0 ? true : false;
     } 

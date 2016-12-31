@@ -117,7 +117,9 @@ $(function() {
            var po_fields = $('[name=po_fields]'); 
            var val_array = []; 
            for (var i = 0; i < po_fields.length; i++) {
-               val_array.unshift(po_fields[i].value); 
+               if (po_fields[i].value && po_fields[i].value.length > 0) { 
+                   val_array.shift(po_fields[i].value); 
+               } 
            } 
            payout_string = val_array.join(',');
            console.log(payout_string);  
