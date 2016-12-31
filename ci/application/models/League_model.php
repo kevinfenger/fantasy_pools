@@ -51,7 +51,7 @@ class League_model extends CI_Model {
                     max_members = ?, 
                     payouts = ?
                 WHERE league_id = ?';
-        print_r($sql);  
+
         $this->db->query(
           $sql, 
           array(

@@ -160,7 +160,7 @@ class League extends CI_Controller {
            echo json_encode(array('message' => 'success')); 
        } 
        else { 
-           # TODO function this  
+           // TODO function this  
            header('HTTP/1.1 500 Internal Server Something went wrong'); 
            die(json_encode(array('message' => 'ERROR', 'code' => 500)));
        }
