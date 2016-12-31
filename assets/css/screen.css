@@ -161,4 +161,8 @@ background-color: #f2dede; }
 .glyphicon
 {
     font-size: 12px;
+}
+.controls 
+{ 
+    padding-left: 17px; 
 } 
