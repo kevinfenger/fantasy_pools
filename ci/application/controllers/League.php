@@ -96,6 +96,7 @@ class League extends CI_Controller {
 	$this->stencil->slice('header');
         $this->stencil->slice('header_league_nav');
 	$this->stencil->layout('league_layout');
+        $this->stencil->js('league_funcs');
 	$this->stencil->css('font-awesome');
         $league_details = $this->league_model->get_league_details($league_id); 
 	$data['league_details'] = $league_details; 
