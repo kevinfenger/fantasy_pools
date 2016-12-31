@@ -59,19 +59,34 @@
       </div>
       <div class="row"> 
         <div class="col-sm-4">
-          <h5>Payouts</h5>
+          <h5>Payouts - place each payout in an input, click + to add more.</h5>
         </div>
       </div>  
       <div class="form-group"> 
-        <div class="row"> 
-          <div class="entry input-group col-xs-3">
-            <input class="form-control" name="po_fields[]" type="text" placeholder="Enter Payout click plus to add more" />
-            <span class="input-group-btn">
-              <button class="btn btn-success btn-add" type="button">
-                <span class="glyphicon glyphicon-plus"></span>
-              </button>
-            </span>
-          </div>
+        <div class="row">
+          <div class="controls">  
+            <?php 
+             $payouts = explode(',',$league_details['payouts']); 
+             foreach ($payouts as $p): 
+            ?>
+                <div class="entry input-group col-sm-6">
+                  <input class="form-control" name="po_fields[]" type="text" value=<?php echo $p ?> />
+                  <span class="input-group-btn"> 
+                    <button class="btn btn-danger btn-remove" type="button">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                  </span>
+                </div>
+            <?php endforeach; ?>
+            <div class="entry input-group col-sm-6">
+              <input class="form-control" name="po_fields[]" type="text" placeholder="Enter Payout click plus to add more" />
+              <span class="input-group-btn"> 
+                <button class="btn btn-success btn-add" type="button">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+            </div>
+          </div> 
         </div>
       </div> 
       <div class="form-group"> 
