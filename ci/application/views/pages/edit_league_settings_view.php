@@ -3,31 +3,25 @@
       <h1 class="page-header">Edit League</h1>
   </div>
 </div>
-<?php echo print_r($league_details)?>
 <div class="panel-body">
-  <div class="row"> 
-    <div class="col-lg-12">
-      <h4>League Information</h4>
-    </div>
-  </div>  
   <div class="row">
     <div class="col-lg-12">
       <div class="row"> 
         <div class="col-sm-4">
-          <h5>League Name</h5>
+          <h4>League Name</h4>
         </div>
       </div>  
       <div class="form-group">
         <div class="row">  
           <div class="col-sm-6"> 
-            <input id="league_name" type="text" value=<?php echo $league_details['name']; ?>tabindex="1" class="form-control">
+            <input id="league_name" type="text" value=<?php echo $league_details['name']; ?> tabindex="1" class="form-control">
             <span id="league_name_verify_txt" class="verify"></span>
           </div>
         </div>
       </div>
       <div class="row"> 
         <div class="col-sm-4">
-          <h5>League Visibility</h5>
+          <h4>League Visibility</h4>
         </div>
       </div>  
       <div class="form-group"> 
@@ -53,7 +47,7 @@
       <div class="form-group" id="league_password_control_group" style=<?php if ($league_details['visibility'] == 1) echo "display:none"; ?>>
         <div class="row"> 
           <div class="col-sm-4">
-            <h5>League Password</h5>
+            <h4>League Password</h4>
           </div>
         </div>  
         <div class="row">  
@@ -65,7 +59,7 @@
       </div>
       <div class="row"> 
         <div class="col-sm-4">
-          <h5>Max Members</h5>
+          <h4>Max Members</h4>
         </div>
       </div>  
       <div class="form-group">
@@ -76,8 +70,8 @@
         </div>
       </div>
       <div class="row"> 
-        <div class="col-sm-6">
-          <h5>Payouts - place each payout in an input, click + to add more.</h5>
+        <div class="col-sm-7">
+          <h4>Payouts - place each payout in an input, click + to add more.</h4>
         </div>
       </div>  
       <div class="form-group"> 
@@ -88,8 +82,8 @@
                $payouts = explode(',',$league_details['payouts']); 
                foreach ($payouts as $p): 
               ?>
-                <div class="entry input-group col-sm-6">
-                  <input class="form-control" name="po_fields[]" type="text" value=<?php echo $p ?> />
+                <div class="entry input-group col-sm-4">
+                  <input class="form-control" name="po_fields[]" autocomplete="off" type="text" value=<?php echo $p ?> />
                   <span class="input-group-btn"> 
                     <button class="btn btn-danger btn-remove" type="button">
                       <span class="glyphicon glyphicon-minus"></span>
@@ -97,8 +91,8 @@
                   </span>
                 </div>
               <?php endforeach; ?>
-              <div class="entry input-group col-sm-6">
-                <input class="form-control" name="po_fields[]" type="text" placeholder="Enter Payout click plus to add more" />
+              <div class="entry input-group col-sm-4">
+                <input class="form-control" name="po_fields[]" autocomplete="off" type="text" placeholder="$$$" />
                 <span class="input-group-btn"> 
                   <button class="btn btn-success btn-add" type="button">
                     <span class="glyphicon glyphicon-plus"></span>
