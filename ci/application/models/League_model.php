@@ -56,7 +56,7 @@ class League_model extends CI_Model {
     }
     public function get_league_details($league_id) 
     { 
-       $this->db->select('l.name, l.league_id, l.number_of_members, l.max_members, l.image, l.commissioner_id, l.created, l.league_password, l.payouts');
+       $this->db->select('l.name, l.league_id, l.number_of_members, l.max_members, l.image, l.commissioner_id, l.created, l.league_password, l.payouts, l.visibility');
        $query = $this->db->get_where('leagues l', array('l.league_id' => $league_id));
        return $query->num_rows() > 0 ? $query->row_array() : null; 
     } 
