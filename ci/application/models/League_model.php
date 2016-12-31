@@ -190,13 +190,13 @@ class League_model extends CI_Model {
     }    
     public function is_league_comish($league_id, $user_id) 
     { 
-       $this->db->select('comissioner_id');
+       $this->db->select('commissioner_id');
        $query = $this->db->get_where('leagues', array('league_id' => $league_id));
        
        if ($query->num_rows() == 0) 
            return false;
   
        $row = $query->row();
-       return $row->comissioner_id == $user_id;  
+       return $row->commissioner_id == $user_id;  
     }    
 }
