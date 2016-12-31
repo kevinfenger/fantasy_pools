@@ -54,7 +54,7 @@
         <div class="row">  
           <div class="col-sm-6"> 
             <input type="text" id="league_password" placeholder="League Password" 
-                   value=<?php isset($league_details['league_password']) && strlen($league_details['league_password']) > 0 ? echo $league_details['league_password'] : echo ''; ?> 
+                   value=<?php echo isset($league_details['league_password']) && strlen($league_details['league_password']) > 0 ? $league_details['league_password'] : ''; ?> 
                    class="form-control valid">
             <span id="league_password_verify_txt" class="verify"></span>
           </div>
