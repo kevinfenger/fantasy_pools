@@ -84,6 +84,14 @@ $(function() {
            $.fn.team_name_check();
        }
        else {
+          var po_fields = $('[name=po_fields]'); 
+          var val_array = []; 
+          for (var i = 0; i < po_fields.length; i++) {
+              if (po_fields[i].value && po_fields[i].value.length > 0) { 
+                  val_array.push(po_fields[i].value); 
+              } 
+          } 
+          var payout_string = val_array.join(',');
           $.ajax({
                type: "POST"
              , url: "/league/create_league"
@@ -91,7 +99,8 @@ $(function() {
                         league_name: $("#league_name").val(), 
                         private_league: is_private, 
                         league_password: $("#league_password").val(), 
-                        max_members: $("#league_max_members").val()
+                        max_members: $("#league_max_members").val(),
+                        payouts: payout_string
                      })
              , dataType: "json" 
              , success: function(msg) 
@@ -106,7 +115,10 @@ $(function() {
         }
    });
    $("#update_league_button").click(function(){
+       var myRadio = $('input[name=optionsRadios]');
+       var checked = myRadio.filter(':checked').val();
        var valid_check = 1; 
+       is_private = (checked == 2) ? 1 : 0; 
        $.fn.league_name_check();
        if (is_private) {
            valid_check += 1; 
@@ -129,7 +141,6 @@ $(function() {
                } 
            } 
            payout_string = val_array.join(',');
-           console.log(payout_string);  
            $.ajax({
                type: "POST"
              , url: "/league/update_league"
