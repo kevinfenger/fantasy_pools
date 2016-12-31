@@ -54,7 +54,7 @@
         <div class="row">  
           <div class="col-sm-6"> 
             <input type="text" id="league_password" placeholder="League Password" 
-                   value=<?php echo isset($league_details['league_password']) && strlen($league_details['league_password']) > 0 ? $league_details['league_password'] : ''; ?> 
+                   value=<?php echo (isset($league_details['league_password']) && strlen($league_details['league_password']) > 0) ? $league_details['league_password'] : ""; ?> 
                    class="form-control valid">
             <span id="league_password_verify_txt" class="verify"></span>
           </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="row"> 
         <div class="col-sm-7">
-          <h4>Payouts - place each payout in an input, click + to add more. Can always be edited later!</h4>
+          <h4>Payouts - place each payout in an input, click + to add more.</h4>
         </div>
       </div>  
       <div class="form-group"> 

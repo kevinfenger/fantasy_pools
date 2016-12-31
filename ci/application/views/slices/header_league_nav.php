@@ -17,6 +17,7 @@
                  <li><a href="<?php echo base_url('league/edit_settings?league_id='.$league_details['league_id']) ?>">Edit League Settings</a></li>
          <?php endif;?>
          <li><a href="#" data-toggle="modal" data-target="#league_settings_modal">View League Settings</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#league_invite_modal">Invite</a></li>
          <li><a href="#" data-toggle="modal" data-target="#league_payout_modal">Payouts</a></li>
          <li><a href="#" data-toggle="modal" data-target="#league_scoring_modal">Scoring</a></li>
        </ul> 
@@ -142,6 +143,25 @@
               <tr><td>Created</td><td><?php echo $league_details['created']; ?></td></tr>
             </tbody> 
           </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="league_invite_modal" tabindex="-1" role="dialog" aria-labelledby="league_invite_modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="league_invite_modalLabel">Invite Owners</h4>
+      </div>
+      <div class="modal-body">
+          <ul> 
+            <li>First have future owners head to <a href="/league/join">Here</a></li> 
+            <li>Provide them with the League ID : <?php echo $league_details['league_id']; ?> </li> 
+            <li>Provide them with the password : <?php echo $league_details['league_password']; ?> </li>
+            <li>If the password is blank (Public League), they will still be able to join with just a league ID </li> 
+            <li>Enter the information above, and click Join League</li> 
+          </ul> 
       </div>
     </div>
   </div>
