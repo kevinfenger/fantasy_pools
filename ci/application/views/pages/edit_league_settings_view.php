@@ -83,7 +83,7 @@
                foreach ($payouts as $p): 
               ?>
                 <div class="entry input-group col-sm-4">
-                  <input class="form-control" name="po_fields[]" autocomplete="off" type="text" value=<?php echo $p ?> />
+                  <input class="form-control" name="po_fields" autocomplete="off" type="text" value=<?php echo $p ?> />
                   <span class="input-group-btn"> 
                     <button class="btn btn-danger btn-remove" type="button">
                       <span class="glyphicon glyphicon-minus"></span>
@@ -92,7 +92,7 @@
                 </div>
               <?php endforeach; ?>
               <div class="entry input-group col-sm-4">
-                <input class="form-control" name="po_fields[]" autocomplete="off" type="text" placeholder="$$$" />
+                <input class="form-control" name="po_fields" autocomplete="off" type="text" placeholder="$$$" />
                 <span class="input-group-btn"> 
                   <button class="btn btn-success btn-add" type="button">
                     <span class="glyphicon glyphicon-plus"></span>

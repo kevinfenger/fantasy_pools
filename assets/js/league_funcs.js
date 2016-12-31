@@ -106,7 +106,7 @@ $(function() {
         }
    });
    $("#update_league_button").click(function(){
-       var po_fields = $('[name=po_fields[]]'); 
+       var po_fields = $('[name=po_fields]'); 
        console.log('blam'); 
        console.log(po_fields); 
        setTimeout(function(){
