@@ -62,7 +62,7 @@ class League_model extends CI_Model {
             $input['payouts'], 
             $input['league_id']));
  
-        return ($this->db->affected_rows() > 0);
+        return ($this->db->affected_rows() >= 0);
     } 
     public function get_public_leagues() 
     { 
