@@ -155,7 +155,9 @@ class League extends CI_Controller {
     public function update_league() 
     {
        $params = $this->input->post(); 
-       $success = $this->league_model->update_league($params); 
+       echo 'success'; 
+       return; 
+       //$success = $this->league_model->update_league($params); 
        if ($success) { 
            echo 'success'; 
        } 

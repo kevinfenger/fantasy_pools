@@ -106,19 +106,25 @@ $(function() {
         }
    });
    $("#update_league_button").click(function(){
-       if (is_private && $(".valid").length < 2) { 
-           $.fn.league_name_check();
+       var valid_check = 1; 
+       $.fn.league_name_check();
+       if (is_private) {
+           valid_check += 1; 
            $.fn.league_password_check();
        }
-       else if ($(".valid").length < 1) {
-           $.fn.league_name_check();
+       if ($(".valid").length < valid_check) {
+           $("#update_status").html('Fix invalid fields.'); 
+               setTimeout(function(){
+                   $('#update_status').css('display','none');
+           }, 5000);
+           return;  
        }
        else { 
            var po_fields = $('[name=po_fields]'); 
            var val_array = []; 
            for (var i = 0; i < po_fields.length; i++) {
                if (po_fields[i].value && po_fields[i].value.length > 0) { 
-                   val_array.shift(po_fields[i].value); 
+                   val_array.push(po_fields[i].value); 
                } 
            } 
            payout_string = val_array.join(',');
