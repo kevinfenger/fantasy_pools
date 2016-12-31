@@ -45,7 +45,7 @@ class League_model extends CI_Model {
     public function update_league($input) 
     {
         $sql = 'UPDATE leagues 
-                SET league_name = ?, 
+                SET name = ?, 
                     league_password = ?, 
                     visibility = ?, 
                     max_members = ?, 
