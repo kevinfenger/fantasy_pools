@@ -109,7 +109,11 @@
           <div class="col-sm-6"> 
             <button id="update_league_button" type="submit" class="btn btn-primary">Update League</button>
           </div>
-          <span id="update_status" class="status">test</span>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"> 
+            <span id="update_status" class="status"></span>
+          </div>
         </div>
       </div>
     </div>
