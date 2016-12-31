@@ -50,7 +50,7 @@ class League_model extends CI_Model {
                     visibility = ?, 
                     max_members = ?, 
                     payouts = ?
-                WHERE league_id = ?' 
+                WHERE league_id = ?'; 
         $this->db->query(
           $sql, 
           array(
