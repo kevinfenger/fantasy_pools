@@ -15,7 +15,7 @@
       <div class="form-group">
         <div class="row">  
           <div class="col-sm-6"> 
-            <input id="league_name" type="text" value=<?php echo $league_details['name']; ?> tabindex="1" class="form-control">
+            <input id="league_name" type="text" value=<?php echo $league_details['name']; ?> tabindex="1" class="form-control valid">
             <span id="league_name_verify_txt" class="verify"></span>
           </div>
         </div>
@@ -53,7 +53,7 @@
         </div>  
         <div class="row">  
           <div class="col-sm-6"> 
-            <input type="text" id="league_password" placeholder="League Password" value=<?php echo $league_details['league_password']; ?> class="form-control">
+            <input type="text" id="league_password" placeholder="League Password" value=<?php echo $league_details['league_password']; ?> class="form-control valid">
             <span id="league_password_verify_txt" class="verify"></span>
           </div>
         </div>

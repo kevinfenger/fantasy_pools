@@ -113,6 +113,7 @@ $(function() {
            $.fn.league_password_check();
        }
        if ($(".valid").length < valid_check) {
+           $('#update_status').css('display','true');
            $("#update_status").html('Fix invalid fields.'); 
                setTimeout(function(){
                    $('#update_status').css('display','none');
@@ -142,12 +143,14 @@ $(function() {
                      })
              , dataType: "json" 
              , success: function(msg) {
+                   $('#update_status').css('display','true');
                    $("#update_status").html('Successfully Updated League'); 
                    setTimeout(function(){
                        $('#update_status').css('display','none');
                    }, 5000);
                }
              , error: function(jqXHR, exception) {
+                   $('#update_status').css('display','true');
                    $("#update_status").html('Something went wrong, try again shortly.'); 
                    setTimeout(function(){
                        $('#update_status').css('display','none');

@@ -61,7 +61,7 @@ class League_model extends CI_Model {
             $input['max_members'], 
             $input['payouts'], 
             $input['league_id'])); 
-
+        print_r($this->db->_error_message()); 
         return $this->db->affected_rows() > 0 ? true : false;
     } 
     public function get_public_leagues() 
