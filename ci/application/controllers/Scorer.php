@@ -91,7 +91,7 @@ class Scorer extends CI_Controller {
     }
     function add_passing_points(&$player_array, $player_object, $team_name, $name_str, $is_qb=false) 
     { 
-        if (!$player_array[$name_str])
+        if (!isset($player_array[$name_str]))
         {
             $player_array[$name_str] = new player();
             $player_array[$name_str]->name = $name_str;
@@ -133,7 +133,7 @@ class Scorer extends CI_Controller {
                     else 
                         $name_str = $player_object->name; 
       
-                    if (!$player_array[$name_str])
+                    if (!isset($player_array[$name_str]))
                     {
                         $player_array[$name_str] = new player();
                         $player_array[$name_str]->name = $player_object->name;
@@ -169,7 +169,7 @@ class Scorer extends CI_Controller {
             {
                 foreach ($team_object->$stat_type as $player_object)
                 {
-                    if (!$player_array["{$player_object->name}"])
+                    if (!isset($player_array["{$player_object->name}"]))
                     {
                         $player_array["{$player_object->name}"] = new player();
                         $player_array["{$player_object->name}"]->name = $player_object->name;
@@ -208,7 +208,12 @@ class Scorer extends CI_Controller {
         foreach ($player_array as $player)
         {
             $name_part = explode('.', $player->name);
-            $name_part =  "{$name_part[0]}%{$name_part[1]}";
+            if (count($name_part) == 2) { 
+                $name_part =  "{$name_part[0]}%{$name_part[1]}";
+            }
+            else{ 
+                $name_part =  "{$name_part[0]}%";
+            }
             if (strlen($name_part) > 1)
             {
                 if ($player->isK)
@@ -223,8 +228,8 @@ class Scorer extends CI_Controller {
     
                 //mysql_query($query); 
     
-                echo $query;
-                echo "<br />";
+                //echo $query;
+                //echo "<br />";
             }
         }
         $defense += $defense_fumble_points;
@@ -232,8 +237,8 @@ class Scorer extends CI_Controller {
         //$defense_query = "UPDATE players SET week_{$week}_points = $defense WHERE players.position = 'DST' AND players.pro_team = '{$team_object->team_name}'";
         //mysql_query($defense_query); 
     
-        echo $defense_query;
-        echo "<br />";
+        //echo $defense_query;
+        //echo "<br />";
     }
     
     function calc_passing_points($player_object)
@@ -289,7 +294,10 @@ class Scorer extends CI_Controller {
     */
     function calc_defense_points($player_object)
     {
-        $points = $player_object->tds * 6;
+        $points = 0; 
+        if (isset($player_object->tds)) { 
+            $points = $player_object->tds * 6;
+        } 
         $points += $player_object->sk;
         $points += $player_object->int * 2;
     
