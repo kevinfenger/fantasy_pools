@@ -15,14 +15,10 @@ class Player_model extends CI_Model {
     public function get_player_by_name_and_team($first_name, $last_name, $team) 
     { 
        $this->db->select('*');
-       //$this->db->from('players'); 
-       $this->db->like('first_name', $first_name); 
-       $this->db->like('last_name', $last_name); 
+       $this->db->like('first_name', $first_name, 'after'); 
+       $this->db->like('last_name', $last_name, 'after'); 
        $this->db->where('pro_team', $team); 
        $row = $this->db->get('players')->row_array();
-       echo 'test'; 
-       echo $this->db->last_query();
-       //echo 'BLAM row = ' . $row;  
        return $row; 
     }  
     public function update_points_by_week_position_and_team($points, $week, $position, $team) 

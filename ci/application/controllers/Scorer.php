@@ -79,15 +79,7 @@ class Scorer extends CI_Controller {
     function is_player_qb($player_name, $player_team) 
     { 
         $name_part = explode('.', $player_name);
-        //$name_part =  "{$name_part[0]}%{$name_part[1]}";
-        //$query = "SELECT position, full_name FROM players WHERE players.full_name LIKE '$name_part' AND players.pro_team = '$player_team'";
-        //$result = mysql_query($query);
-        //if (!$result)
-        //    return false; 
-        //$row = mysql_fetch_row($result);
         $row = $this->player_model->get_player_by_name_and_team($name_part[0], $name_part[1], $player_team);
-        echo 'test'; 
-        echo $row; 
         print_r($row); 
         return $row['position'] == 'QB';
     }
