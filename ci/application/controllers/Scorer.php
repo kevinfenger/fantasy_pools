@@ -80,7 +80,6 @@ class Scorer extends CI_Controller {
     { 
         $name_part = explode('.', $player_name);
         $row = $this->player_model->get_player_by_name_and_team($name_part[0], $name_part[1], $player_team);
-        print_r($row); 
         return $row['position'] == 'QB';
     }
     function add_passing_points(&$player_array, $player_object, $team_name, $name_str, $is_qb=false) 
@@ -213,34 +212,21 @@ class Scorer extends CI_Controller {
             if (strlen($name_part) > 1)
             {
                 if ($player->isK)
-                    //$query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.position='K' AND players.pro_team = '{$player->team}'";
                     $this->player_model->update_points_by_week_position_and_team($player->points, $week, 'K', $player->team); 
                 else if($player->isQB)
-                    //$query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.position='TQB' AND players.pro_team = '{$player->team}'";
                     $this->player_model->update_points_by_week_position_and_team($player->points, $week, 'TQB', $player->team); 
                 else
                     $this->player_model->update_points_by_week_name_and_team($player->points, $week, $name_part, $player->team); 
-                    //$query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.full_name LIKE '$name_part' AND players.pro_team = '{$player->team}'";
-    
-                //mysql_query($query); 
-    
-                //echo $query;
-                //echo "<br />";
             }
         }
         $defense += $defense_fumble_points;
-        //echo 'defense : ' . $defense . $player->team; 
         $this->player_model->update_points_by_week_position_and_team($defense, $week, 'DST', $team_object->team_name); 
-        //$defense_query = "UPDATE players SET week_{$week}_points = $defense WHERE players.position = 'DST' AND players.pro_team = '{$team_object->team_name}'";
-        //mysql_query($defense_query); 
-    
-        //echo $defense_query;
-        //echo "<br />";
     }
     
     function calc_passing_points($player_object)
     {
-        $points = floor($player_object->yds / 25);
+        //$points = floor($player_object->yds / 25);
+        $points = ($player_object->yds / 25);
         $points += $player_object->tds * 4;
         $points += $player_object->twoptm * 2;
         $points -= $player_object->ints;
@@ -249,7 +235,8 @@ class Scorer extends CI_Controller {
     
     function calc_rushing_receiving_points($player_object)
     {
-        $points = floor($player_object->yds / 10);
+        //$points = floor($player_object->yds / 10);
+        $points = ($player_object->yds / 10);
         if ($points < 0)
             $points = 0;
     
