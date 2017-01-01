@@ -85,7 +85,7 @@ class Scorer extends CI_Controller {
         //if (!$result)
         //    return false; 
         //$row = mysql_fetch_row($result);
-        $row = $this->player_model->get_player_by_name_and_team($player_name, $player_team);
+        $row = $this->player_model->get_player_by_name_and_team($name_part, $player_team);
         echo 'test'; 
         echo $row; 
         print_r($row); 
@@ -237,6 +237,7 @@ class Scorer extends CI_Controller {
             }
         }
         $defense += $defense_fumble_points;
+        echo 'defense : ' . $defense; 
         $this->player_model->update_points_by_week_position_and_team($defense, $week, 'DST', $player->team); 
         //$defense_query = "UPDATE players SET week_{$week}_points = $defense WHERE players.position = 'DST' AND players.pro_team = '{$team_object->team_name}'";
         //mysql_query($defense_query); 
