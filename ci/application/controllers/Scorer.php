@@ -225,7 +225,6 @@ class Scorer extends CI_Controller {
     
     function calc_passing_points($player_object)
     {
-        //$points = floor($player_object->yds / 25);
         $points = ($player_object->yds / 25);
         $points += $player_object->tds * 4;
         $points += $player_object->twoptm * 2;
@@ -235,10 +234,9 @@ class Scorer extends CI_Controller {
     
     function calc_rushing_receiving_points($player_object)
     {
-        //$points = floor($player_object->yds / 10);
         $points = ($player_object->yds / 10);
-        if ($points < 0)
-            $points = 0;
+        //if ($points < 0)
+        //    $points = 0;
     
         $points += $player_object->tds * 6;
         $points += $player_object->twoptm * 2;
