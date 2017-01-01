@@ -86,6 +86,8 @@ class Scorer extends CI_Controller {
         //    return false; 
         //$row = mysql_fetch_row($result);
         $row = $this->player_model->get_player_by_name_and_team($player_name, $player_team);
+        echo 'test'; 
+        echo $row; 
         print_r($row); 
         return $row['position'] == 'QB';
     }
@@ -104,7 +106,9 @@ class Scorer extends CI_Controller {
     {
         $week = "one";
         $player_array = array();
-        $defense = $defense_td_points[$team_object->team_name];
+        $defense = 0; 
+        if (isset($defense_td_points[$team_object->team_name])) 
+            $defense = $defense_td_points[$team_object->team_name];
         $defense_fumble_points = 0;
         foreach ($team_object as $stat_type => $value)
         {
@@ -151,7 +155,7 @@ class Scorer extends CI_Controller {
                     else 
                         $name_str = $player_object->name;
      
-                    if (!$player_array[$name_str])
+                    if (!isset($player_array[$name_str]))
                     {
                         $player_array[$name_str] = new player();
                         $player_array[$name_str]->name = $player_object->name;
@@ -184,7 +188,7 @@ class Scorer extends CI_Controller {
             {
                 foreach ($team_object->$stat_type as $player_object)
                 {
-                    if (!$player_array["{$player_object->name}"])
+                    if (!isset($player_array["{$player_object->name}"]))
                     {
                         $player_array["{$player_object->name}"] = new player();
                         $player_array["{$player_object->name}"]->name = $player_object->name;
