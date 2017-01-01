@@ -14,6 +14,7 @@ class Scorer extends CI_Controller {
     public function __construct()
     {
         parent::__construct();	
+	$this->load->model('player_model');
     }
     
     public function index() 
@@ -79,12 +80,14 @@ class Scorer extends CI_Controller {
     { 
         $name_part = explode('.', $player_name);
         $name_part =  "{$name_part[0]}%{$name_part[1]}";
-        $query = "SELECT position, full_name FROM players WHERE players.full_name LIKE '$name_part' AND players.pro_team = '$player_team'";
-        $result = mysql_query($query);
-        if (!$result)
-            return false; 
-        $row = mysql_fetch_row($result);
-        return $row[0] == 'QB';
+        //$query = "SELECT position, full_name FROM players WHERE players.full_name LIKE '$name_part' AND players.pro_team = '$player_team'";
+        //$result = mysql_query($query);
+        //if (!$result)
+        //    return false; 
+        //$row = mysql_fetch_row($result);
+        $row = $this->player_model->get_player_by_name_and_team($player_name, $player_team);
+        print_r($row); 
+        return $row['position'] == 'QB';
     }
     function add_passing_points(&$player_array, $player_object, $team_name, $name_str, $is_qb=false) 
     { 
@@ -209,21 +212,25 @@ class Scorer extends CI_Controller {
             if (strlen($name_part) > 1)
             {
                 if ($player->isK)
-                    $query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.position='K' AND players.pro_team = '{$player->team}'";
+                    //$query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.position='K' AND players.pro_team = '{$player->team}'";
+                    $this->player_model->update_points_by_week_position_and_team($player->points, $week, 'K', $player->team); 
                 else if($player->isQB)
-                    $query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.position='TQB' AND players.pro_team = '{$player->team}'";
+                    //$query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.position='TQB' AND players.pro_team = '{$player->team}'";
+                    $this->player_model->update_points_by_week_position_and_team($player->points, $week, 'TQB', $player->team); 
                 else
-                    $query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.full_name LIKE '$name_part' AND players.pro_team = '{$player->team}'";
+                    $this->player_model->update_points_by_week_name_and_team($player->points, $week, $name_part, $player->team); 
+                    //$query = "UPDATE players SET week_{$week}_points = {$player->points} WHERE players.full_name LIKE '$name_part' AND players.pro_team = '{$player->team}'";
     
-                mysql_query($query); 
+                //mysql_query($query); 
     
                 echo $query;
                 echo "<br />";
             }
         }
         $defense += $defense_fumble_points;
-        $defense_query = "UPDATE players SET week_{$week}_points = $defense WHERE players.position = 'DST' AND players.pro_team = '{$team_object->team_name}'";
-        mysql_query($defense_query); 
+        $this->player_model->update_points_by_week_position_and_team($defense, $week, 'DST', $player->team); 
+        //$defense_query = "UPDATE players SET week_{$week}_points = $defense WHERE players.position = 'DST' AND players.pro_team = '{$team_object->team_name}'";
+        //mysql_query($defense_query); 
     
         echo $defense_query;
         echo "<br />";

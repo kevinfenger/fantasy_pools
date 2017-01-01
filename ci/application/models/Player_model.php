@@ -11,35 +11,22 @@ class Player_model extends CI_Model {
        $query = $this->db->get_where('players', array('position' => $position));
        return $query->result_array(); 
 
-    } 
-    public function get_teams_by_user() 
+    }
+    public function get_player_by_name_and_team($name, $team) 
+    { 
+       $this->db->select('*');
+       $this->db->from('players'); 
+       $this->db->like('full_name', $name); 
+       return $this->db->get->row_array();
+    }  
+    public function update_points_by_week_position_and_team($points, $week, $position, $team) 
     {
-$ch = curl_init();
-
-// set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, "http://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json");
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// grab URL and pass it to the browser
-$result = curl_exec($ch);
-
-$players = json_decode($result);
-$players = $players->body->players;
-//print_r($players); 
-foreach ($players as $player) { 
-    if (isset($player->icons->headline)) 
-        $headline = $player->icons->headline;
-    else 
-        $headline = "";
-    if (!empty($player->firstname)) 
-        $first_name = $player->firstname; 
-    else 
-        $first_name = $player->lastname; 
-    $sql = "INSERT INTO players (position,full_name,first_name,last_name,pro_team, notes)  VALUES(?,?,?,?,?,?)"; 
-    $this->db->query($sql, array($player->position, $player->fullname, $first_name, $player->lastname, $player->pro_team, $headline));  
-} 
-//print_r($players); 
-// close cURL resource, and free up system resources
-curl_close($ch); 
+        $sql = "UPDATE players SET week_{$week}_points = {$points} WHERE players.position='{$position}' AND players.pro_team = '{$team}'"; 
+        $this->db->query($sql);
     } 
+    public function update_points_by_week_name_and_team($points, $week, $name, $team) 
+    { 
+        $sql = "UPDATE players SET week_{$week}_points = {$points} WHERE players.full_name LIKE '$name' AND players.pro_team = '{$team}'"; 
+        $this->db->query($sql);
+    }  
 }
