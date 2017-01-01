@@ -85,7 +85,7 @@ class Scorer extends CI_Controller {
         //if (!$result)
         //    return false; 
         //$row = mysql_fetch_row($result);
-        $row = $this->player_model->get_player_by_name_and_team($name_part, $player_team);
+        $row = $this->player_model->get_player_by_name_and_team($name_part[0], $name_part[1], $player_team);
         echo 'test'; 
         echo $row; 
         print_r($row); 
