@@ -18,7 +18,7 @@ class Player_model extends CI_Model {
        $this->db->from('players'); 
        $this->db->like('full_name', $name); 
        $this->db->where('pro_team', $team); 
-       return $this->db->get->row_array();
+       return $this->db->get()->row_array();
     }  
     public function update_points_by_week_position_and_team($points, $week, $position, $team) 
     {
