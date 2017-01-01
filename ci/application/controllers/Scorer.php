@@ -91,11 +91,11 @@ class Scorer extends CI_Controller {
         if (!$player_array[$name_str])
         {
             $player_array[$name_str] = new player();
-    	$player_array[$name_str]->name = $name_str;
-    	$player_array[$name_str]->team = $team_name;
-    	$player_array[$name_str]->isQB = $is_qb;
+            $player_array[$name_str]->name = $name_str;
+            $player_array[$name_str]->team = $team_name;
+            $player_array[$name_str]->isQB = $is_qb;
         }
-        $player_array[$name_str]->points += calc_passing_points($player_object);       
+        $player_array[$name_str]->points += $this->calc_passing_points($player_object);       
     }
     function calc_by_team($team_object, $defense_td_points)
     {
@@ -109,15 +109,15 @@ class Scorer extends CI_Controller {
             {
                 foreach ($team_object->$stat_type as $player_object)
                 {
-                    if (is_player_qb($player_object->name, $team_object->team_name))  { 
+                    if ($this->is_player_qb($player_object->name, $team_object->team_name))  { 
                         $name_str = $team_object->team_name . 'TQB'; 
-                        add_passing_points($player_array, $player_object, $team_object->team_name, $name_str, true); 
+                        $this->add_passing_points($player_array, $player_object, $team_object->team_name, $name_str, true); 
                     } 
                     else { 
                         $name_str = $player_object->name; 
-                        add_passing_points($player_array, $player_object, $team_object->team_name, $name_str); 
+                        $this->add_passing_points($player_array, $player_object, $team_object->team_name, $name_str); 
                         $name_str = $team_object->team_name . 'TQB'; 
-                        add_passing_points($player_array, $player_object, $team_object->team_name, $name_str); 
+                        $this->add_passing_points($player_array, $player_object, $team_object->team_name, $name_str); 
                     } 
                 }
             }
@@ -125,7 +125,7 @@ class Scorer extends CI_Controller {
             {
                 foreach ($team_object->$stat_type as $player_object)
                 {
-                    if (is_player_qb($player_object->name, $team_object->team_name)) 
+                    if ($this->is_player_qb($player_object->name, $team_object->team_name)) 
                         $name_str = $team_object->team_name . 'TQB'; 
                     else 
                         $name_str = $player_object->name; 
@@ -136,14 +136,14 @@ class Scorer extends CI_Controller {
                         $player_array[$name_str]->name = $player_object->name;
                         $player_array[$name_str]->team = $team_object->team_name;
                     }
-                    $player_array[$name_str]->points += calc_rushing_receiving_points($player_object);       
+                    $player_array[$name_str]->points += $this->calc_rushing_receiving_points($player_object);       
                 }
             }
             if ($stat_type === 'fumbles')
             {
                 foreach ($team_object->$stat_type as $player_object)
                 {
-                    if (is_player_qb($player_object->name, $team_object->team_name)) 
+                    if ($this->is_player_qb($player_object->name, $team_object->team_name)) 
                         $name_str = $team_object->team_name . 'TQB'; 
                     else 
                         $name_str = $player_object->name;
@@ -154,7 +154,7 @@ class Scorer extends CI_Controller {
                         $player_array[$name_str]->name = $player_object->name;
                         $player_array[$name_str]->team = $team_object->team_name;
                     }
-                    $fpoints = calc_fumble_points($player_object);
+                    $fpoints = $this->calc_fumble_points($player_object);
                     $player_array[$name_str]->points += $fpoints;      
                     if ($fpoints > 0)
                     {
@@ -173,7 +173,7 @@ class Scorer extends CI_Controller {
                         $player_array["{$player_object->name}"]->team = $team_object->team_name;
                         $player_array["{$player_object->name}"]->isK = true;
                     }
-                    $player_array["{$player_object->name}"]->points += calc_kicking_points($player_object);       
+                    $player_array["{$player_object->name}"]->points += $this->calc_kicking_points($player_object);       
                 }
             }
             //DEF-ST stats
@@ -187,7 +187,7 @@ class Scorer extends CI_Controller {
                         $player_array["{$player_object->name}"]->name = $player_object->name;
                         $player_array["{$player_object->name}"]->team = $team_object->team_name;
                     }
-                    $return_points = calc_return_points($player_object);
+                    $return_points = $this->calc_return_points($player_object);
                     $player_array["{$player_object->name}"]->points += $return_points;      
                     $defense += $return_points; 
                 }
@@ -197,8 +197,8 @@ class Scorer extends CI_Controller {
                 foreach ($team_object->$stat_type as $player_object)
                 {
                     $player_array["{$player_object->name}"] = new player();
-                    $defense += calc_defense_points($player_object);
-                    $player_array["{$player_object->name}"]->points += calc_defense_points($player_object);       
+                    $defense += $this->calc_defense_points($player_object);
+                    $player_array["{$player_object->name}"]->points += $this->calc_defense_points($player_object);       
                 }
             }
         }
