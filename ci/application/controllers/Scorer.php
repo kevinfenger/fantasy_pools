@@ -26,13 +26,15 @@ class Scorer extends CI_Controller {
         $scores_page = curl_exec($ch);
         
         $pattern = '/gamecenter\/[0-9]*/';
+        $game_ids = array(); 
+
         preg_match_all($pattern, $scores_page, $matches);
         
         foreach($matches[0] as $match)
         {
             $match = explode('/', $match);
             $match = $match[1];
-            if (!$game_ids[$match])
+            if (!isset($game_ids[$match]))
                 $game_ids[$match] = $match;
         }
         foreach ($game_ids as $game_id)
@@ -55,6 +57,9 @@ class Scorer extends CI_Controller {
                 foreach($game_object->$game_id->scrsummary as $item)
                 {
                     if ($item->type == 'TD' && (strstr($item->desc, "interception return") || strstr($item->desc, "interception return")))
+                        if (!isset($defense_td_points[$item->team])) 
+                            $defense_td_points[$item->team] = 0; 
+
                         $defense_td_points[$item->team] += 6;
                 }
         
@@ -64,8 +69,8 @@ class Scorer extends CI_Controller {
                 $away_team_object->team_name = $game_object->$game_id->away->abbr;
         
                 // TODO readd
-                //calc_by_team($home_team_object, $defense_td_points);
-                //calc_by_team($away_team_object, $defense_td_points);
+                calc_by_team($home_team_object, $defense_td_points);
+                calc_by_team($away_team_object, $defense_td_points);
             }
         }
     }
