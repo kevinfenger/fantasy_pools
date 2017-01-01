@@ -79,7 +79,7 @@ class Scorer extends CI_Controller {
     function is_player_qb($player_name, $player_team) 
     { 
         $name_part = explode('.', $player_name);
-        $name_part =  "{$name_part[0]}%{$name_part[1]}";
+        //$name_part =  "{$name_part[0]}%{$name_part[1]}";
         //$query = "SELECT position, full_name FROM players WHERE players.full_name LIKE '$name_part' AND players.pro_team = '$player_team'";
         //$result = mysql_query($query);
         //if (!$result)
