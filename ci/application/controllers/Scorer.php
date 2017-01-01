@@ -237,7 +237,7 @@ class Scorer extends CI_Controller {
             }
         }
         $defense += $defense_fumble_points;
-        echo 'defense : ' . $defense; 
+        echo 'defense : ' . $defense . $player->team; 
         $this->player_model->update_points_by_week_position_and_team($defense, $week, 'DST', $player->team); 
         //$defense_query = "UPDATE players SET week_{$week}_points = $defense WHERE players.position = 'DST' AND players.pro_team = '{$team_object->team_name}'";
         //mysql_query($defense_query); 
