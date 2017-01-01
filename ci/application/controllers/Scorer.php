@@ -56,11 +56,12 @@ class Scorer extends CI_Controller {
             {
                 foreach($game_object->$game_id->scrsummary as $item)
                 {
-                    if ($item->type == 'TD' && (strstr($item->desc, "interception return") || strstr($item->desc, "interception return")))
+                    if ($item->type == 'TD' && (strstr($item->desc, "interception return") || strstr($item->desc, "interception return"))) { 
                         if (!isset($defense_td_points[$item->team])) 
                             $defense_td_points[$item->team] = 0; 
 
                         $defense_td_points[$item->team] += 6;
+                    } 
                 }
         
                 $home_team_object = $game_object->$game_id->home->stats;
@@ -69,8 +70,8 @@ class Scorer extends CI_Controller {
                 $away_team_object->team_name = $game_object->$game_id->away->abbr;
         
                 // TODO readd
-                calc_by_team($home_team_object, $defense_td_points);
-                calc_by_team($away_team_object, $defense_td_points);
+                $this->calc_by_team($home_team_object, $defense_td_points);
+                $this->calc_by_team($away_team_object, $defense_td_points);
             }
         }
     }
