@@ -6,7 +6,8 @@ class Player_model extends CI_Model {
     }
     public function get_players_by_position($position) 
     {
-       $this->db->where_in('pro_team', array('IND','DEN','CIN','PIT','NE','BAL','GB','SEA','ARI','CAR','DET','DAL'));  
+       //$this->db->where_in('pro_team', array('IND','DEN','CIN','PIT','NE','BAL','GB','SEA','ARI','CAR','DET','DAL'));  
+       $this->db->where('selectable', 1);  
        $this->db->order_by('pro_team'); 
        $query = $this->db->get_where('players', array('position' => $position));
        return $query->result_array(); 
