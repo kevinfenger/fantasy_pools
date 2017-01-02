@@ -8,7 +8,7 @@
     <div class="col-lg-12">
       <div class="row"> 
         <div class="col-sm-4">
-          <h4>Email Address - <small>Enter your email we will get you a link to reset your password.</small></h4>
+          <h4><small>Enter the email you signed up with. You will then receive a link to reset your password.</small></h4>
         </div>
       </div>  
       <div class="form-group">
