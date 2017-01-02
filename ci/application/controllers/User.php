@@ -72,4 +72,12 @@ class User extends CI_Controller
         //echo 'true'; 
         }
     }
+    public function forgot_password() 
+    { 
+	$this->stencil->slice('head');
+	$this->stencil->slice('header');
+	$this->stencil->layout('standard_layout');
+        $this->stencil->slice('header_league_nav');
+        $this->stencil->paint('forgot_password_view');
+    }  
 }

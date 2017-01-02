@@ -33,7 +33,7 @@
         <h4 class="modal-title" id="league_scoring_modalLabel">League Scoring</h4>
       </div>
       <div class="modal-body">
-          <table class="table table-striped" id="modal_table">
+          <table class="table table-striped">
             <p id="loading" style="display:none">Loading</p>
             <thead>
               <tr>
@@ -94,7 +94,7 @@
         <h4 class="modal-title" id="league_payout_modalLabel">League Payouts</h4>
       </div>
       <div class="modal-body">
-          <table class="table table-striped" id="modal_table">
+          <table class="table table-striped">
             <p id="loading" style="display:none">Loading</p>
             <thead>
               <tr>
@@ -125,7 +125,7 @@
         <h4 class="modal-title" id="league_payout_modalLabel">League Settings</h4>
       </div>
       <div class="modal-body">
-          <table class="table table-striped" id="modal_table">
+          <table class="table table-striped">
             <p id="loading" style="display:none">Loading</p>
             <thead>
               <tr>
