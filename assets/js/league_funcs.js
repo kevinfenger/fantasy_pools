@@ -14,7 +14,7 @@ $(function() {
                                selected_player_row.find('.player_team').html(player_team); 
                                selected_player_row.find('.sel_play').html('Change');
                                selected_player_row.attr('value',player_id); 
-                               $('#choose_player_modal').modal('toggle');  
+                               $('#choose_player_modal .close').click();  
                                $.fn.save_team(); 
                           });  
    $('#choose_player_modal').on('show.bs.modal', function (event) {
