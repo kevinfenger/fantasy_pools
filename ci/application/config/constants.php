@@ -38,6 +38,6 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('LEAGUE_PRIVATE_VISIBILITY',0); 
 define('LEAGUE_PUBLIC_VISIBILITY',1); 
-define('PLAYERS_VIEWABLE_DATETIME', '2015-01-03 14:35:00'); 
+define('PLAYERS_VIEWABLE_DATETIME', '2017-01-09 14:35:00'); 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
