@@ -1,0 +1,5 @@
+version: 1
+cron: 
+ - name: "scoring" 
+   url: "/scorer" 
+   schedule: "*/5 * * * *" 
