@@ -19,7 +19,7 @@ class Scorer extends CI_Controller {
     
     public function index() 
     {
-        $ch = curl_init("http://www.nfl.com/scores/2016/REG16");
+        $ch = curl_init("http://www.nfl.com/scores/2016/POST18");
         $options = array(
             CURLOPT_RETURNTRANSFER => true,
         );
