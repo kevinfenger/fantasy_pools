@@ -102,7 +102,7 @@ class Team extends CI_Controller {
     public function save_team() 
     { 
        $params = $this->input->post(); 
-       if (strtotime(PLAYERS_VIEWABLE_DATETIME) <= time(null)) {  
+       if (strtotime(PLAYERS_VIEWABLE_DATETIME) >= time(null)) {  
            echo $this->team_model->save_team($params); 
        } 
        else { 
