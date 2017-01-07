@@ -102,7 +102,12 @@ class Team extends CI_Controller {
     public function save_team() 
     { 
        $params = $this->input->post(); 
-       echo $this->team_model->save_team($params); 
+       if (strtotime(PLAYERS_VIEWABLE_DATETIME) <= time(null)) {  
+           echo $this->team_model->save_team($params); 
+       } 
+       else { 
+           echo 'failure';  
+       } 
     }
     private function _paint_team($user_id, $team_details, $league_details, $view) { 
         $this->stencil->js('league_funcs');
