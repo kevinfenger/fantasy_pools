@@ -19,7 +19,7 @@ class Scorer extends CI_Controller {
     
     public function index() 
     {
-        $ch = curl_init("http://www.nfl.com/scores/2016/POST20");
+        $ch = curl_init("http://www.nfl.com/scores/2016/POST22");
         $options = array(
             CURLOPT_RETURNTRANSFER => true,
         );
@@ -95,7 +95,7 @@ class Scorer extends CI_Controller {
     }
     function calc_by_team($team_object, $defense_td_points)
     {
-        $week = "three";
+        $week = "four";
         $player_array = array();
         $defense = 0; 
         if (isset($defense_td_points[$team_object->team_name])) 
