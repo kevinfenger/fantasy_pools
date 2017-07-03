@@ -19,9 +19,9 @@
 
 	<hr>
 
-	<footer class="container">
+	<!--footer class="container">
 		<p>&copy; kf 2013</p>
-	</footer>
+	</footer-->
 
 </body>
 </html>

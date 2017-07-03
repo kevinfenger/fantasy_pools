@@ -42,12 +42,31 @@ class Slices {
 		$this->CI =& get_instance();
 	}
 
-	public function sidebar()
+	/*public function sidebar()
 	{
             $this->CI->load->model('team_model');
             $data['user_teams'] = $this->CI->team_model->get_teams_by_user();  
             return $data; 
         }
+	public function my_teams()
+	{
+            $this->CI->load->model('team_model');
+            $data['user_teams'] = $this->CI->team_model->get_teams_by_user();  
+            return $data; 
+        }*/ 
+	public function content()
+	{
+            $this->CI->load->model('team_model');
+            $data['user_teams'] = $this->CI->team_model->get_teams_by_user();  
+            return $data; 
+        }
+        //public function header_league_nav() 
+        //{ 
+            //$this->CI->load->model('league_model');
+            //$data['kfed'] = 'blam';
+            //$data['league_id'] = $league_id; 
+            //return array('league_details' => array('one', 'two', 'three'));  
+        //} 
 }
 /* End of file Slices.php */
 /* Location: ./application/libararies/Slices.php */

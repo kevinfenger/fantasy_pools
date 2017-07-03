@@ -1,0 +1,29 @@
+html, body, .container, .container-table {
+    height: 100%;
+}
+.home {
+    background: url('../img/bg_image.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
+.container-table {
+    width: 100%;  
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+.vertical-center-row h1 { 
+    font-size: 4.5em;
+    font-weight: 700;
+} 
+.vertical-center-row h3 { 
+    font-size: 20px;
+} 
+.container { 
+    height: 100%; 
+}

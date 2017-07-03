@@ -14,7 +14,7 @@ $(function() {
                                selected_player_row.find('.player_team').html(player_team); 
                                selected_player_row.find('.sel_play').html('Change');
                                selected_player_row.attr('value',player_id); 
-                               $('#choose_player_modal').modal('toggle');  
+                               $('#choose_player_modal .close').click();  
                                $.fn.save_team(); 
                           });  
    $('#choose_player_modal').on('show.bs.modal', function (event) {
@@ -84,10 +84,24 @@ $(function() {
            $.fn.team_name_check();
        }
        else {
+          var po_fields = $('[name=po_fields]'); 
+          var val_array = []; 
+          for (var i = 0; i < po_fields.length; i++) {
+              if (po_fields[i].value && po_fields[i].value.length > 0) { 
+                  val_array.push(po_fields[i].value); 
+              } 
+          } 
+          var payout_string = val_array.join(',');
           $.ajax({
                type: "POST"
              , url: "/league/create_league"
-             , data: ({ team_name: $("#team_name").val(), league_name: $("#league_name").val(), private_league: is_private, league_password: $("#league_password").val() })
+             , data: ({ team_name: $("#team_name").val(), 
+                        league_name: $("#league_name").val(), 
+                        private_league: is_private, 
+                        league_password: $("#league_password").val(), 
+                        max_members: $("#league_max_members").val(),
+                        payouts: payout_string
+                     })
              , dataType: "json" 
              , success: function(msg) 
                         {
@@ -100,6 +114,62 @@ $(function() {
            });
         }
    });
+   $("#update_league_button").click(function(){
+       var myRadio = $('input[name=optionsRadios]');
+       var checked = myRadio.filter(':checked').val();
+       var valid_check = 1; 
+       is_private = (checked == 2) ? 1 : 0; 
+       $.fn.league_name_check();
+       if (is_private) {
+           valid_check += 1; 
+           $.fn.league_password_check();
+       }
+       if ($(".valid").length < valid_check) {
+           $('#update_status').css('display','true');
+           $("#update_status").html('Fix invalid fields.'); 
+               setTimeout(function(){
+                   $('#update_status').css('display','none');
+           }, 5000);
+           return;  
+       }
+       else { 
+           var po_fields = $('[name=po_fields]'); 
+           var val_array = []; 
+           for (var i = 0; i < po_fields.length; i++) {
+               if (po_fields[i].value && po_fields[i].value.length > 0) { 
+                   val_array.push(po_fields[i].value); 
+               } 
+           } 
+           payout_string = val_array.join(',');
+           $.ajax({
+               type: "POST"
+             , url: "/league/update_league"
+             , data: ({  
+                        league_name: $("#league_name").val(),
+                        league_id: $('#league_id').val(),  
+                        visibility: is_private ? 0 : 1, 
+                        league_password: is_private ? $("#league_password").val() : "", 
+                        max_members: $("#league_max_members").val(), 
+                        payouts: payout_string
+                     })
+             , dataType: "json" 
+             , success: function(msg) {
+                   $('#update_status').removeAttr('style');
+                   $("#update_status").html('Successfully Updated League'); 
+                   setTimeout(function(){
+                       $('#update_status').css('display','none');
+                   }, 5000);
+               }
+             , error: function(jqXHR, exception) {
+                   $('#update_status').removeAttr('style');
+                   $("#update_status").html('Something went wrong, try again shortly.'); 
+                   setTimeout(function(){
+                       $('#update_status').css('display','none');
+                   }, 5000);
+               }
+            });
+       } 
+   }); 
    $("#league_password").keyup(function(){ $.fn.league_password_check(); });
    $("#league_name").keyup(function(){ $.fn.league_name_check(); });
    $("#league_password").change(function(){ $.fn.league_password_check(); });
@@ -215,5 +285,25 @@ $(function() {
            is_private = 0; 
            $("#league_password_control_group").toggle();  
        }
-   });  
+   }); 
+   $(document).on('click', '.btn-add', function(e)
+   {
+       e.preventDefault();
+
+       var controlForm = $('.controls form:first'),
+           currentEntry = $(this).parents('.entry:first'),
+           newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+       newEntry.find('input').val('');
+       controlForm.find('.entry:not(:last) .btn-add')
+           .removeClass('btn-add').addClass('btn-remove')
+           .removeClass('btn-success').addClass('btn-danger')
+           .html('<span class="glyphicon glyphicon-minus"></span>');
+   }).on('click', '.btn-remove', function(e)
+   {
+       $(this).parents('.entry:first').remove();
+
+       e.preventDefault();
+       return false;
+   }); 
 });
